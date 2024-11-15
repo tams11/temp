@@ -46,3 +46,33 @@ p {
     padding: 5px;
     margin-bottom: 10px;
 }
+
+/* General styling for the camera container */
+.camera-container {
+    padding: 10px;
+    border: 2px solid #ffffff; /* White border */
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .camera-container {
+        padding: 5px; /* Reduce padding for smaller screens */
+        border-width: 1px; /* Thinner border */
+    }
+}
+
+@media (max-width: 480px) {
+    .camera-container {
+        padding: 3px; /* Minimal padding for very small screens */
+        border-width: 1px; /* Thinner border */
+        border-radius: 5px; /* Smaller rounded corners */
+    }
+}
