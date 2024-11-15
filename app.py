@@ -6,7 +6,7 @@ import streamlit as st
 
 def load_css(file_name):
     with open(file_name) as f:
-        st.html(f"<style>{f.read()}</style>")
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Apply the custom CSS file
 load_css("style.css")
@@ -67,9 +67,17 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 
 # Streamlit app interface
 st.title("Skin Classification")
-st.header("Please upload a skin image or take a picture with your camera")
+st.header("Upload a skin image or take a picture with your camera")
 
 class_labels = ["AD", "Normal", "Others"]
+
+st.markdown("""
+<div class="camera-container">
+    <div class="custom-camera-label">
+        📷 Take a Photo
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # File uploader in Streamlit
 camera_file = st.camera_input("", label_visibility="collapsed", key="camera_input")
@@ -78,13 +86,12 @@ uploaded_file = st.file_uploader("or choose an image...", type=["jpg", "jpeg", "
 image_placeholder = st.empty()
 image_source = None
 
-image_source = None
 if uploaded_file is not None:
     image_source = Image.open(uploaded_file).convert("RGB")
-    image_placeholder.image(image_source, caption="Uploaded Image", use_column_width=True, key="uploaded_image")
+    image_placeholder.image(image_source, caption="Uploaded Image", use_column_width=True)
 elif camera_file is not None:
     image_source = Image.open(camera_file).convert("RGB")
-    image_placeholder.image(image_source, caption="Captured Image", use_column_width=True, key="captured_image")
+    image_placeholder.image(image_source, caption="Captured Image", use_column_width=True)
 
 if image_source is not None:
     st.write("Classifying...")
