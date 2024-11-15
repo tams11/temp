@@ -41,14 +41,6 @@ p {
 }
 /* Style for "Take a picture" button and video input */
 .stCameraInput {
-    border: 5px solid #ffffff;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-/* General styling for the camera container */
-.camera-container {
     padding: 10px;
     border: 2px solid #ffffff; /* White border */
     border-radius: 10px;
@@ -61,16 +53,16 @@ p {
     align-items: center;
 }
 
-/* Responsive adjustments for smaller screens */
+
 @media (max-width: 768px) {
-    .camera-container {
+    .stCameraInput {
         padding: 5px; /* Reduce padding for smaller screens */
         border-width: 1px; /* Thinner border */
     }
 }
 
 @media (max-width: 480px) {
-    .camera-container {
+    .stCameraInput {
         padding: 3px; /* Minimal padding for very small screens */
         border-width: 1px; /* Thinner border */
         border-radius: 5px; /* Smaller rounded corners */

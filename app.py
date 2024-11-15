@@ -67,17 +67,9 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 
 # Streamlit app interface
 st.title("Skin Classification")
-st.header("Upload a skin image or take a picture with your camera")
+st.header(" 📸 Upload a skin image or take a picture with your camera ")
 
 class_labels = ["AD", "Normal", "Others"]
-
-st.markdown("""
-<div class="camera-container">
-    <div class="custom-camera-label">
-        📷 Take a Photo
-    </div>
-</div>
-""", unsafe_allow_html=True)
 
 # File uploader in Streamlit
 camera_file = st.camera_input("", label_visibility="collapsed", key="camera_input")
