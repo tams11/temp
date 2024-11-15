@@ -63,10 +63,6 @@ class CustomLayer(tf.keras.layers.Layer):
 
 tf.keras.utils.get_custom_objects().update({'HubLayer': HubLayer})
 
-'''feature_extractor_model = "https://tfhub.dev/google/tf2-preview/mobilenet_v2/feature_vector/4"
-
-wrapped_feature_extractor = HubLayer(feature_extractor_model, input_shape=(224, 224, 3), trainable=False)'''
-
 model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': HubLayer, 'CustomLayer': CustomLayer})
 
 # Streamlit app interface
