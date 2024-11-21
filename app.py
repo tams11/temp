@@ -67,27 +67,20 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 
 # Streamlit app interface
 def main():
-    # Initialize session state for navigation
     if "page" not in st.session_state:
         st.session_state.page = "home"
 
-    # Navigation Menu
+    # Sidebar for Navigation
     with st.sidebar:
-        st.markdown(
-            """
-            <div class="css-1v3fvcr">
-                <h3>Navigation</h3>
-                <ul style="list-style-type: none; padding-left: 0;">
-                    <li><a href="#" onclick="window.location.href='/home'">🏠 Home</a></li>
-                    <li><a href="#" onclick="window.location.href='/camera'">📸 Camera (Skin Classification)</a></li>
-                    <li><a href="#" onclick="window.location.href='/manual_input'">✏️ Manual SCORAD Input</a></li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+        st.title("Navigation")
+        if st.button("Home"):
+            st.session_state.page = "home"
+        if st.button("Camera (Skin Classification)"):
+            st.session_state.page = "camera"
+        if st.button("Manual SCORAD Input"):
+            st.session_state.page = "manual_input"
 
-    # Render pages
+    # Render pages based on the state
     if st.session_state.page == "home":
         home_page()
     elif st.session_state.page == "camera":
@@ -95,39 +88,54 @@ def main():
     elif st.session_state.page == "manual_input":
         manual_input_page()
 
+
 def home_page():
+    # Display a title and some information
     st.markdown(
         """
-        <div class="section">
-            <h2>Learn More About Atopic Dermatitis</h2>
-            <p>
-                Atopic dermatitis (AD), also known as eczema, is a chronic skin condition characterized by itchy, inflamed skin. 
-                It's important to monitor and manage AD to prevent flare-ups and discomfort.
-            </p>
+        <div class="home-page">
+            <h1>Welcome to Atopic Dermatitis Monitoring</h1>
+            <div class="section learn-more">
+                <h3>Learn More About Atopic Dermatitis</h3>
+                <p>Atopic Dermatitis (AD) is a common chronic skin condition...</p>
+            </div>
+            <div class="section data-privacy">
+                <h3>Data Privacy Act</h3>
+                <p>This system complies with the Data Privacy Act...</p>
+            </div>
         </div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
+
+    # Custom "Get Started" button
     st.markdown(
         """
-        <div class="section">
-            <h2>Data Privacy Act</h2>
-            <p>
-                This system complies with the Data Privacy Act to ensure secure handling of your data. 
-                All collected information will remain confidential and will only be used for monitoring purposes.
-            </p>
-        </div>
+        <style>
+        .custom-button {
+            display: block;
+            margin: 30px auto;
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+        </style>
+        <a href="#" onclick="window.location.href = '/?page=camera';" class="custom-button">Get Started</a>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
-    st.markdown(
-        """
-        <div class="center-button">
-            <button onclick="window.location.href='/camera'">Get Started</button>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+
 
 
 def camera_page():
@@ -184,5 +192,23 @@ def manual_input_page():
         st.write("### Result")
         st.write("Submitted SCORAD results will be displayed here.")
 
+st.markdown(
+    """
+    <script>
+    function navigateTo(page) {
+        // Send the page name to Streamlit using session state
+        var myInput = window.parent.document.querySelectorAll('[data-testid="stMarkdownContainer"] input')[0];
+        myInput.value = page;
+        myInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    </script>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Add a hidden input to capture page navigation
+st.text_input("hidden_page_state", key="page", label_visibility="hidden")
+
+# Run the main app
 if __name__ == "__main__":
     main()
