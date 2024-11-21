@@ -66,27 +66,20 @@ tf.keras.utils.get_custom_objects().update({'HubLayer': HubLayer})
 model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': HubLayer, 'CustomLayer': CustomLayer})
 
 # Streamlit app interface
+import streamlit as st
+
 def main():
-    if "page" not in st.session_state:
-        st.session_state.page = "home"
+    query_params = st.experimental_get_query_params()
+    page = query_params.get("page", ["home"])[0]  # Default to 'home'
 
-    # Sidebar for Navigation
-    with st.sidebar:
-        st.title("Navigation")
-        if st.button("Home"):
-            st.session_state.page = "home"
-        if st.button("Camera (Skin Classification)"):
-            st.session_state.page = "camera"
-        if st.button("Manual SCORAD Input"):
-            st.session_state.page = "manual_input"
-
-    # Render pages based on the state
-    if st.session_state.page == "home":
+    # Navigation Logic
+    if page == "home":
         home_page()
-    elif st.session_state.page == "camera":
+    elif page == "camera":
         camera_page()
-    elif st.session_state.page == "manual_input":
+    elif page == "manual_input":
         manual_input_page()
+
 
 
 def home_page():
