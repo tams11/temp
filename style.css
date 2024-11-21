@@ -12,7 +12,7 @@ body {
 h1 {
     color: white;
     font-size: 2.5em;
-    font-weight: 20px;
+    font-weight: bold;
     text-align: center;
     margin-top: 20px;
 }
@@ -46,16 +46,24 @@ h2 {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
+/* Left-align text with an indent */
+.section p {
+    text-align: left;
+    text-indent: 20px;
+    line-height: 1.6;
+}
+
 /* Floating, semi-transparent navigation panel */
 .css-1v3fvcr {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    border-right: 2px solid #ccc;
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+    border-right: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
     padding: 15px;
+    backdrop-filter: blur(10px); /* Adds a blur effect for elegance */
 }
 
 /* Centered "Get Started" button styling */
