@@ -98,7 +98,7 @@ def home_page():
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.markdown("### Learn More About Atopic Dermatitis")
     st.write(
-        " TESTING! \n"
+        " TESTING!  \n"
         " Kuha ako description dun sa paper mismo? "
     )
     st.markdown('</div>', unsafe_allow_html=True)
@@ -107,8 +107,8 @@ def home_page():
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.markdown("### Data Privacy Act")
     st.write(
-        "AYWAN KO! DIKO ALAM TO! \n"
-        "\t:)\t"
+        "AYWAN KO!  \nDIKO ALAM TO!  \n"
+        "  \t  :)  \t  "
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
