@@ -75,3 +75,37 @@ p {
     text-indent: 20px;
     color: white;
 }
+
+/* Button Styles */
+.custom-button {
+    display: inline-block;
+    margin: 30px auto;
+    padding: 15px 30px;
+    background-color: #007BFF; /* Blue background */
+    color: white; /* White text */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.custom-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Page Container */
+.home-page {
+    padding: 20px;
+    text-align: center;
+}
+

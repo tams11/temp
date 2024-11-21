@@ -69,21 +69,29 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 import streamlit as st
 
 def main():
-    query_params = st.experimental_get_query_params()
-    page = query_params.get("page", ["home"])[0]  # Default to 'home'
+    if "page" not in st.session_state:
+        st.session_state.page = "home"
 
-    # Navigation Logic
-    if page == "home":
+    # Sidebar Navigation
+    with st.sidebar:
+        st.title("Navigation")
+        if st.button("Home"):
+            st.session_state.page = "home"
+        if st.button("Camera (Skin Classification)"):
+            st.session_state.page = "camera"
+        if st.button("Manual SCORAD Input"):
+            st.session_state.page = "manual_input"
+
+    # Render the appropriate page
+    if st.session_state.page == "home":
         home_page()
-    elif page == "camera":
+    elif st.session_state.page == "camera":
         camera_page()
-    elif page == "manual_input":
+    elif st.session_state.page == "manual_input":
         manual_input_page()
 
-
-
 def home_page():
-    # Display a title and some information
+    # Title and Description
     st.markdown(
         """
         <div class="home-page">
@@ -101,16 +109,16 @@ def home_page():
         unsafe_allow_html=True,
     )
 
-    # Custom "Get Started" button
+    # Custom "Get Started" Button
     st.markdown(
         """
         <style>
         .custom-button {
-            display: block;
+            display: inline-block;
             margin: 30px auto;
             padding: 15px 30px;
-            background-color: #007BFF;
-            color: white;
+            background-color: #007BFF; /* Blue background */
+            color: white; /* White text */
             font-size: 18px;
             font-weight: bold;
             text-align: center;
@@ -121,15 +129,13 @@ def home_page():
             cursor: pointer;
         }
         .custom-button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Darker blue on hover */
         }
         </style>
         <a href="#" onclick="window.location.href = '/?page=camera';" class="custom-button">Get Started</a>
         """,
         unsafe_allow_html=True,
     )
-
-
 
 def camera_page():
     st.title("Skin Classification")
