@@ -98,7 +98,7 @@ def home_page():
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.markdown("### Learn More About Atopic Dermatitis")
     st.write(
-        " TESTING! "
+        " TESTING! \n"
         " Kuha ako description dun sa paper mismo? "
     )
     st.markdown('</div>', unsafe_allow_html=True)
@@ -107,8 +107,8 @@ def home_page():
     st.markdown('<div class="content-section">', unsafe_allow_html=True)
     st.markdown("### Data Privacy Act")
     st.write(
-        "AYWAN KO! DIKO ALAM TO!"
-        "   :)  "
+        "AYWAN KO! DIKO ALAM TO! \n"
+        "\t:)\t"
     )
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -158,11 +158,11 @@ def manual_input_page():
     col1, col2, col3 = st.columns([1, 2, 1])
     with col1:
         st.write("### Guide")
-        st.markdown("Follow the instructions to manually input SCORAD values.")
+        st.markdown("DUMIDIKIT SA GITNA")
 
     with col2:
         st.write("### Input")
-        scorad_value = st.text_input("Enter SCORAD Value:")
+        scorad_value = st.text_input("Enter SCORAD Value: ")
         if st.button("Submit"):
             if scorad_value.isdigit():
                 st.success(f"SCORAD Value Submitted: {scorad_value}")
@@ -171,7 +171,7 @@ def manual_input_page():
 
     with col3:
         st.write("### Result")
-        st.write("Submitted SCORAD results will be displayed here.")
+        st.write("Submitted SCORAD results will be displayed here. kung gagana HAHAHAH")
 
 # Run the main app
 if __name__ == "__main__":
