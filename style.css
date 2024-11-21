@@ -1,4 +1,4 @@
-/* Background styling */
+/* Background Gradient */
 body {
     background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
     color: white;
@@ -8,128 +8,70 @@ body {
     background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
 }
 
-/* Title styling */
-h1 {
-    color: white;
-    font-size: 2.5em;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
+/* Floating Sidebar */
+.css-1v3fvcr {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 20px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
 }
 
-p {
+/* Center the Get Started Button */
+.center-button {
     text-align: center;
-    font-style: sans-serif;
+    margin: 40px 0;
+}
+
+.center-button button {
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
     font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.center-button button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Indent for Informational Sections */
+.section {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: left;
+    text-indent: 20px;
+}
+
+/* Title and Headers */
+h1, h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: white;
 }
 
 h2 {
-    text-align: center;
-    font-style: sans-serif;
-    font-size: 22px;
+    font-size: 1.8rem;
+    color: #ffdead; /* Light beige for contrast */
 }
 
-.stContainer {
-    padding: 25px;
-    border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Bordered sections for informational content */
-.section {
-    border: 2px solid #007BFF; /* Blue border */
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
-    color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-}
-
-/* Left-align text with an indent */
-.section p {
-    text-align: left;
+/* Text */
+p {
+    font-size: 16px;
+    line-height: 1.5;
     text-indent: 20px;
-    line-height: 1.6;
-}
-
-/* Floating, semi-transparent navigation panel */
-.css-1v3fvcr {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
-    border-right: 2px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    padding: 15px;
-    backdrop-filter: blur(10px); /* Adds a blur effect for elegance */
-}
-
-/* Centered "Get Started" button styling */
-.center-button {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.stButton > button {
-    background-color: #007BFF; /* Blue background */
     color: white;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.stButton > button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slight zoom effect */
-}
-
-/* Style for the image upload and camera container */
-.image-upload-container, .camera-container {
-    padding: 10px;
-    border-radius: 10px;
-    border: 5px solid #ffffff;
-    margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-}
-
-.image-upload-container, .camera-container label {
-    align-items: center;
-}
-
-/* Style for "Take a picture" button and video input */
-.stCameraInput {
-    padding: 10px;
-    border: 2px solid #ffffff; /* White border */
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .stCameraInput {
-        padding: 5px; /* Reduce padding for smaller screens */
-        border-width: 1px; /* Thinner border */
-    }
-}
-
-@media (max-width: 480px) {
-    .stCameraInput {
-        padding: 3px; /* Minimal padding for very small screens */
-        border-width: 1px; /* Thinner border */
-        border-radius: 5px; /* Smaller rounded corners */
-    }
 }

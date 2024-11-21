@@ -73,13 +73,19 @@ def main():
 
     # Navigation Menu
     with st.sidebar:
-        st.title("Navigation")
-        if st.button("Home"):
-            st.session_state.page = "home"
-        if st.button("Camera (Skin Classification)"):
-            st.session_state.page = "camera"
-        if st.button("Manual SCORAD Input"):
-            st.session_state.page = "manual_input"
+        st.markdown(
+            """
+            <div class="css-1v3fvcr">
+                <h3>Navigation</h3>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li><a href="#" onclick="window.location.href='/home'">🏠 Home</a></li>
+                    <li><a href="#" onclick="window.location.href='/camera'">📸 Camera (Skin Classification)</a></li>
+                    <li><a href="#" onclick="window.location.href='/manual_input'">✏️ Manual SCORAD Input</a></li>
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
 
     # Render pages
     if st.session_state.page == "home":
@@ -90,12 +96,39 @@ def main():
         manual_input_page()
 
 def home_page():
-    st.title("Welcome to Atopic Dermatitis Intensity Interpretation")
-    st.write("Learn more about Atopic Dermatitis and start using the monitoring system.")
-    st.markdown("### Data Privacy Act")
-    st.write("This system complies with the Data Privacy Act to ensure secure handling of your data.")
-    if st.button("Get Started"):
-        st.session_state.page = "camera"
+    st.markdown(
+        """
+        <div class="section">
+            <h2>Learn More About Atopic Dermatitis</h2>
+            <p>
+                Atopic dermatitis (AD), also known as eczema, is a chronic skin condition characterized by itchy, inflamed skin. 
+                It's important to monitor and manage AD to prevent flare-ups and discomfort.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        """
+        <div class="section">
+            <h2>Data Privacy Act</h2>
+            <p>
+                This system complies with the Data Privacy Act to ensure secure handling of your data. 
+                All collected information will remain confidential and will only be used for monitoring purposes.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown(
+        """
+        <div class="center-button">
+            <button onclick="window.location.href='/camera'">Get Started</button>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 
 def camera_page():
     st.title("Skin Classification")
