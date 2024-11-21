@@ -69,20 +69,20 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 import streamlit as st
 
 def main():
+    # Initialize session state for navigation
     if "page" not in st.session_state:
         st.session_state.page = "home"
 
-    # Sidebar Navigation
     with st.sidebar:
         st.title("Navigation")
-        if st.button("Home"):
+        if st.button("Home", key="home_button"):
             st.session_state.page = "home"
-        if st.button("Camera (Skin Classification)"):
+        if st.button("Camera (Skin Classification)", key="camera_button"):
             st.session_state.page = "camera"
-        if st.button("Manual SCORAD Input"):
+        if st.button("Manual SCORAD Input", key="manual_input_button"):
             st.session_state.page = "manual_input"
 
-    # Render the appropriate page
+    # Render pages
     if st.session_state.page == "home":
         home_page()
     elif st.session_state.page == "camera":
@@ -90,52 +90,34 @@ def main():
     elif st.session_state.page == "manual_input":
         manual_input_page()
 
-def home_page():
-    # Title and Description
-    st.markdown(
-        """
-        <div class="home-page">
-            <h1>Welcome to Atopic Dermatitis Monitoring</h1>
-            <div class="section learn-more">
-                <h3>Learn More About Atopic Dermatitis</h3>
-                <p>Atopic Dermatitis (AD) is a common chronic skin condition...</p>
-            </div>
-            <div class="section data-privacy">
-                <h3>Data Privacy Act</h3>
-                <p>This system complies with the Data Privacy Act...</p>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 
-    # Custom "Get Started" Button
-    st.markdown(
-        """
-        <style>
-        .custom-button {
-            display: inline-block;
-            margin: 30px auto;
-            padding: 15px 30px;
-            background-color: #007BFF; /* Blue background */
-            color: white; /* White text */
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            text-decoration: none;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-        .custom-button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
-        </style>
-        <a href="#" onclick="window.location.href = '/?page=camera';" class="custom-button">Get Started</a>
-        """,
-        unsafe_allow_html=True,
+def home_page():
+    st.title("Welcome to Atopic Dermatitis Intensity Interpretation")
+
+    # Learn more section
+    st.markdown('<div class="content-section">', unsafe_allow_html=True)
+    st.markdown("### Learn More About Atopic Dermatitis")
+    st.write(
+        " TESTING! "
+        " Kuha ako description dun sa paper mismo? "
     )
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # Data Privacy section
+    st.markdown('<div class="content-section">', unsafe_allow_html=True)
+    st.markdown("### Data Privacy Act")
+    st.write(
+        "AYWAN KO! DIKO ALAM TO!"
+        "   :)  "
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # Center-aligned "Get Started" button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Get Started", key="get_started_button"):
+            st.session_state.page = "camera"  # Navigate to camera page
+
 
 def camera_page():
     st.title("Skin Classification")
