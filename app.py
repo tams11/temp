@@ -191,23 +191,6 @@ def manual_input_page():
         st.write("### Result")
         st.write("Submitted SCORAD results will be displayed here.")
 
-st.markdown(
-    """
-    <script>
-    function navigateTo(page) {
-        // Send the page name to Streamlit using session state
-        var myInput = window.parent.document.querySelectorAll('[data-testid="stMarkdownContainer"] input')[0];
-        myInput.value = page;
-        myInput.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-    </script>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Add a hidden input to capture page navigation
-st.text_input("hidden_page_state", key="page", label_visibility="hidden")
-
 # Run the main app
 if __name__ == "__main__":
     main()
