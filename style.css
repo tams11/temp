@@ -1,3 +1,4 @@
+/* Background styling */
 body {
     background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
     color: white;
@@ -7,7 +8,7 @@ body {
     background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
 }
 
-/* Style the title and other elements as desired */
+/* Title styling */
 h1 {
     color: white;
     font-size: 2.5em;
@@ -34,18 +35,67 @@ h2 {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Bordered sections for informational content */
+.section {
+    border: 2px solid #007BFF; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Floating, semi-transparent navigation panel */
+.css-1v3fvcr {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-right: 2px solid #ccc;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+/* Centered "Get Started" button styling */
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.stButton > button {
+    background-color: #007BFF; /* Blue background */
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.stButton > button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
 /* Style for the image upload and camera container */
 .image-upload-container, .camera-container {
     padding: 10px;
     border-radius: 10px;
     border: 5px solid #ffffff;
     margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
 }
 
-.image-upload-container, .camera-container label{
+.image-upload-container, .camera-container label {
     align-items: center;
 }
+
 /* Style for "Take a picture" button and video input */
 .stCameraInput {
     padding: 10px;
@@ -60,7 +110,7 @@ h2 {
     align-items: center;
 }
 
-
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
     .stCameraInput {
         padding: 5px; /* Reduce padding for smaller screens */
