@@ -108,14 +108,11 @@ def home_page():
     st.markdown("""
     <div class="content-section">
         <h2>Data Privacy Act</h2>
-        <p>AYWAN KO!  \nDIKO ALAM TO!  \n  \t:)  \t</p>
+        <p>Tinanggal ko yung ano ah</p>
+        <p>"Get Started" na button</p>
+        <p>Diko kasi alam pano icenter nadadamay yung buttons sa gilid</p>
     </div>
     """, unsafe_allow_html=True)
-       
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        if st.button("Get Started", key="get_started_button"):
-            st.session_state.page = "camera"
         
 def camera_page():
     st.title("Skin Classification")
