@@ -67,21 +67,22 @@ h2 {
 }
 
 .stButton button {
-    background-color: #007BFF; /* Blue background */
-    color: white;
+    background-color: linear-gradient(135deg, #a8d0e6, #87bdd8);
+    color: whitesmoke;
     font-size: 18px;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
     cursor: pointer;
     font-weight: bold;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Hover Effect for Get Started Button */
 .stButton button:hover {
-    background-color: #0056b3; /* Darker blue */
+    background-color: linear-gradient(135deg, #87bdd8, #6fa8dc);; /* Darker blue */
     transform: scale(1.05); /* Slight zoom effect */
 }
 
@@ -158,4 +159,3 @@ body {
         border-radius: 5px; /* Smaller rounded corners */
     }
 }
-
