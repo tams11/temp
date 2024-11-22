@@ -6,13 +6,35 @@
     text-align: center;
     font-weight: bold;
     margin-bottom: 20px;
-}
-
-/* Navigation Panel Background */
-.css-1d391kg {
     background: linear-gradient(135deg, rgba(255, 175, 189, 0.6), rgba(100, 216, 252, 0.6)); /* Blended gradient */
     padding: 15px;
     border-radius: 10px;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5em;
+    font-weight: 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    font-style: sans-serif;
+    font-size: 16px;
+}
+
+h2 {
+    text-align: center;
+    font-style: sans-serif;
+    font-size: 22px;
+}
+
+.stContainer {
+    padding: 25px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Navigation Buttons */
@@ -46,15 +68,15 @@
 
 .stButton button {
     background-color: #007BFF; /* Blue background */
-    color: white; /* White text */
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
     border: none;
-    padding: 12px 24px;
-    font-size: 1.2em;
-    font-weight: bold;
     cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Hover Effect for Get Started Button */
@@ -71,26 +93,30 @@
 
 /* Section Content Styling */
 .content-section {
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Semi-transparent white border */
+    border: 2px solid #007BFF; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */ /* Subtle shadow effect */
+}
+
+.image-upload-container, .camera-container label {
+    align-items: center;
+}
+
+.stCameraInput {
+    padding: 10px;
+    border: 2px solid #ffffff; /* White border */
     border-radius: 10px;
-    padding: 15px;
-    margin: 20px auto;
-    background-color: rgba(255, 255, 255, 0.2); /* Lightly transparent white background */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-}
-
-/* Section Titles */
-.content-section h2 {
-    text-align: center; /* Center section titles */
-    color: black;
-    font-family: "Arial", sans-serif;
-}
-
-/* Section Paragraphs */
-.content-section p {
-    text-align: center; /* Justified text for better readability */
-    color: black;
-    font-size: 1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Adjust Text Input Boxes */
@@ -107,8 +133,28 @@ textarea, input[type="text"], input[type="number"], input[type="email"], input[t
 
 /* Homepage Gradient Background */
 body {
-    background: linear-gradient(135deg, #FFAFBD, #64D8FC); /* Smooth gradient background */
+    background: linear-gradient(135deg, #64D8FC, #FFAFBD); /* Smooth gradient background */
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
+
+}
+
+.stApp {
+    background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
+}
+
+@media (max-width: 768px) {
+    .stCameraInput {
+        padding: 5px; /* Reduce padding for smaller screens */
+        border-width: 1px; /* Thinner border */
+    }
+}
+
+@media (max-width: 480px) {
+    .stCameraInput {
+        padding: 3px; /* Minimal padding for very small screens */
+        border-width: 1px; /* Thinner border */
+        border-radius: 5px; /* Smaller rounded corners */
+    }
 }

@@ -67,28 +67,41 @@ model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': 
 
 # Streamlit app interface
 import streamlit as st
-
-if "page" not in st.session_state:
-    st.session_state.page = "home"
-
-def sidebar_navigation():
-    st.markdown('<h1 class="css-1d391kg">Navigation</h1>', unsafe_allow_html=True)
-
-    # Custom navigation buttons
-    if st.button("Home", key="home_button"):
+    
+def main():
+    
+    if "page" not in st.session_state:
         st.session_state.page = "home"
-    if st.button("Camera (Skin Classification)", key="camera_button"):
-        st.session_state.page = "camera"
-    if st.button("Manual SCORAD Input", key="manual_input_button"):
-        st.session_state.page = "manual_input"
+    
+    with st.sidebar:
+        st.markdown(
+        """
+        <div class="css-1d391kg">
+        <h3>Navigation</h3>
+        """,
+        unsafe_allow_html=True
+    )
+        if st.button("Home", key="home_button"):
+            st.session_state.page = "home"
+        if st.button("Camera (Skin Classification)", key="camera_button"):
+            st.session_state.page = "camera"
+        if st.button("Manual SCORAD Input", key="manual_input_button"):
+            st.session_state.page = "manual_input"
 
+    # Render selected page
+    if st.session_state.page == "home":
+        home_page()
+    elif st.session_state.page == "camera":
+        camera_page()
+    elif st.session_state.page == "manual_input":
+        manual_input_page()
 
 def home_page():
     st.title("Welcome to Atopic Dermatitis Intensity Interpretation")
     st.markdown("""
     <div class="content-section">
-    <h2>Learn More About Atopic Dermatitis</h2>
-    <p>TESTING!  \nKuha ako description dun sa paper mismo?</p>
+        <h2>Learn More About Atopic Dermatitis</h2>
+        <p>TESTING!  \nKuha ako description dun sa paper mismo?</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -161,17 +174,7 @@ def manual_input_page():
         st.write("Submitted SCORAD results will be displayed here. kung gagana HAHAHAH")
 
 # Run the main app
-def main():
-    st.sidebar.markdown('<div class="css-1d391kg">Navigation</div>', unsafe_allow_html=True)
-    sidebar_navigation()
 
-    # Render selected page
-    if st.session_state.page == "home":
-        home_page()
-    elif st.session_state.page == "camera":
-        camera_page()
-    elif st.session_state.page == "manual_input":
-        manual_input_page()
         
 if __name__ == "__main__":
     main()
