@@ -112,8 +112,10 @@ def home_page():
     </div>
     """, unsafe_allow_html=True)
        
-    if st.button("Get Started"):
-        st.session_state.page = "camera"
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Get Started"):
+            st.session_state.page = "camera"
         
 def camera_page():
     st.title("Skin Classification")
