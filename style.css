@@ -81,8 +81,8 @@ h2 {
 
 /* Hover Effect for Get Started Button */
 .stButton button:hover {
-    background-color: #5d97d4; /* Darker blue */
-    transform: scale(1.05); /* Slight zoom effect */
+background-color: #5d97d4; /* Darker blue */
+transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Adjust Text Inside Button */
