@@ -114,7 +114,7 @@ def home_page():
        
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("Get Started"):
+        if st.button("Get Started", key="get_started_button"):
             st.session_state.page = "camera"
         
 def camera_page():
