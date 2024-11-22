@@ -81,11 +81,11 @@ def main():
         """,
         unsafe_allow_html=True
     )
-        if st.button("Home", key="home_button"):
+        if st.button("Home ►", key="home_button"):
             st.session_state.page = "home"
-        if st.button("Camera (Skin Classification)", key="camera_button"):
+        if st.button("Camera (Skin Classification) ►", key="camera_button"):
             st.session_state.page = "camera"
-        if st.button("Manual SCORAD Input", key="manual_input_button"):
+        if st.button("Manual SCORAD Input ►", key="manual_input_button"):
             st.session_state.page = "manual_input"
 
     # Render selected page
