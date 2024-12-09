@@ -78,15 +78,18 @@ def main():
         """
         <div class="css-1d391kg">
         <h3>Navigation</h3>
+        </div>
         """,
         unsafe_allow_html=True
     )
-        if st.button("Home ►", key="home_button"):
-            st.session_state.page = "home"
-        if st.button("Camera (Skin Classification) ►", key="camera_button"):
-            st.session_state.page = "camera"
-        if st.button("Manual SCORAD Input ►", key="manual_input_button"):
-            st.session_state.page = "manual_input"
+        col1, = st.columns(1)
+        with col1:
+            if st.button("Home", key="home_button", use_container_width=True):
+                st.session_state.page = "home"
+            if st.button("Camera (Skin Classification)", key="camera_button", use_container_width=True):
+                st.session_state.page = "camera"
+            if st.button("Manual SCORAD Input", key="manual_input_button", use_container_width=True):
+                st.session_state.page = "manual_input"
 
     # Render selected page
     if st.session_state.page == "home":
@@ -153,19 +156,18 @@ def camera_page():
         class_label = class_labels[predicted_class]
         severity_score = severity_scores[class_label]
         
-        # Store the severity score in B1
+        # Store the severity score in B1 without displaying it
         st.session_state.B1 = severity_score
         
-        st.write(f"Prediction: {class_label}")
-        st.write(f"Severity Score (B1): {st.session_state.B1}")
-        
-        # Display a colored box based on severity
+        # Display only the intensity level with color coding
         if class_label == "Mild":
-            st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Mild Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
         elif class_label == "Moderate":
-            st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Moderate Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
         else:
-            st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Severe Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
+            
+        st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
 
     if uploaded_file or camera_file:
         st.session_state["uploaded_image"] = None
@@ -173,39 +175,62 @@ def camera_page():
         
 def manual_input_page():
     st.title("Manual SCORAD Input")
-    st.header("Enter the SCORAD Intensity Information")
+    st.header("Complete SCORAD Assessment")
 
-    # Initialize B1 in session state if it doesn't exist
+    # Initialize variables in session state if they don't exist
+    if 'A' not in st.session_state:
+        st.session_state.A = 0
     if 'B1' not in st.session_state:
         st.session_state.B1 = 0
+    if 'B2' not in st.session_state:
+        st.session_state.B2 = 0
+    if 'C' not in st.session_state:
+        st.session_state.C = 0
 
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col1:
-        st.write("### Severity Guide")
-        st.markdown("""
-        - Mild: B1 = 3
-        - Moderate: B1 = 6
-        - Severe: B1 = 9
-        """)
+    # Part A - Extent
+    st.subheader("Part A - Extent Score")
+    st.session_state.A = st.number_input(
+        "Input score for Part A (Extent) of SCORAD test (0-100):",
+        min_value=0.0,
+        max_value=100.0,
+        value=float(st.session_state.A)
+    )
 
-    with col2:
-        st.write("### Input")
-        severity = st.selectbox("Select Severity Level:", ["Mild", "Moderate", "Severe"])
-        st.session_state.B1 = {"Mild": 3, "Moderate": 6, "Severe": 9}[severity]
+    # Part B2 - Intensity
+    st.subheader("Part B2 - Additional Intensity Criteria")
+    st.session_state.B2 = st.number_input(
+        "Input score for Part B2 of SCORAD test (0-18):",
+        min_value=0,
+        max_value=18,
+        value=int(st.session_state.B2)
+    )
+
+    # Part C - Subjective symptoms
+    st.subheader("Part C - Subjective Symptoms")
+    st.session_state.C = st.number_input(
+        "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
+        min_value=0,
+        max_value=20,
+        value=float(st.session_state.C)
+    )
+
+    if st.button("Calculate Total SCORAD"):
+        # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
+        total_scorad = (st.session_state.A / 5) + (7 * (st.session_state.B1 + st.session_state.B2) / 2) + st.session_state.C
+        st.success(f"Total SCORAD Score: {total_scorad:.2f}")
         
-        if st.button("Submit"):
-            st.success(f"Severity Level: {severity}")
-            st.success(f"B1 Score: {st.session_state.B1}")
-
-    with col3:
-        st.write("### Result")
-        if 'severity' in locals():
-            if severity == "Mild":
-                st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Mild Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
-            elif severity == "Moderate":
-                st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Moderate Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
-            else:
-                st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Severe Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+        # Interpret SCORAD score
+        if total_scorad < 25:
+            severity = "Mild"
+            color = "#90EE90"
+        elif total_scorad < 50:
+            severity = "Moderate"
+            color = "#FFD700"
+        else:
+            severity = "Severe"
+            color = "#FF6B6B"
+            
+        st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
 
 # Run the main app
 
