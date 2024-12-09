@@ -127,7 +127,7 @@ def camera_page():
     class_labels = ["Mild", "Moderate", "Severe"]
     severity_scores = {"Mild": 3, "Moderate": 6, "Severe": 9}
 
-    # Initialize B1 in session state if it doesn't exist
+    # Initialize B1 variable
     if 'B1' not in st.session_state:
         st.session_state.B1 = 0
 
@@ -156,10 +156,9 @@ def camera_page():
         class_label = class_labels[predicted_class]
         severity_score = severity_scores[class_label]
         
-        # Store the severity score in B1 without displaying it
+        # Score ng B1
         st.session_state.B1 = severity_score
         
-        # Display only the intensity level with color coding
         if class_label == "Mild":
             st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
         elif class_label == "Moderate":
@@ -177,7 +176,7 @@ def manual_input_page():
     st.title("Manual SCORAD Input")
     st.header("Complete SCORAD Assessment")
 
-    # Initialize variables in session state if they don't exist
+    # gawin ko sana manual input ng A, B2, C tapos formula ng SCORAD
     if 'A' not in st.session_state:
         st.session_state.A = 0
     if 'B1' not in st.session_state:
@@ -187,7 +186,7 @@ def manual_input_page():
     if 'C' not in st.session_state:
         st.session_state.C = 0
 
-    # Part A - Extent
+    # Part A - Area
     st.subheader("Part A - Extent Score")
     st.session_state.A = st.number_input(
         "Input score for Part A (Extent) of SCORAD test (0-100):",
@@ -232,8 +231,5 @@ def manual_input_page():
             
         st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
 
-# Run the main app
-
-        
 if __name__ == "__main__":
     main()
