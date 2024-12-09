@@ -18,11 +18,7 @@ class HubLayer(tf.keras.layers.Layer):
 
     def build(self, input_shape):
         self.hub_layer = hub.KerasLayer(self.handle, trainable=self.trainable)
-        # This assumes the Hub layer has a single output.
-        # You might need to adjust this if it has multiple outputs.
         self.hub_layer.build(input_shape)
-        # Instead of directly appending to _trainable_weights and _non_trainable_weights,
-        # add the weights using self.add_weight, but replace '/' with '_' in names
         for w in self.hub_layer.trainable_weights:
             self.add_weight(
                 name=w.name.replace('/', '_'),  # Replace '/' with '_'
@@ -104,7 +100,7 @@ def home_page():
     st.markdown("""
     <div class="content-section">
         <h2>Learn More About Atopic Dermatitis</h2>
-        <p>TESTING!  \nKuha ako description dun sa paper mismo?</p>
+        <p>Atopic Dermatitis, also called atopic eczema, is the most common inflammatory skin disease worldwide. AD is a significant public health concern due to the immune system's instability in AD, there is chronic inflammation and a compromised skin barrier, which causes severe pain, itching, and an increased risk of infection.</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -187,20 +183,20 @@ def manual_input_page():
         st.session_state.C = 0
 
     # Part A - Area
-    st.subheader("Part A - Extent Score")
+    st.subheader("Part A - Area of Extent Score")
     st.session_state.A = st.number_input(
         "Input score for Part A (Extent) of SCORAD test (0-100):",
-        min_value=0.0,
-        max_value=100.0,
+        min_value=0,
+        max_value=100,
         value=float(st.session_state.A)
     )
 
     # Part B2 - Intensity
     st.subheader("Part B2 - Additional Intensity Criteria")
     st.session_state.B2 = st.number_input(
-        "Input score for Part B2 of SCORAD test (0-18):",
+        "Input score for Part B2 of SCORAD test (0-9):",
         min_value=0,
-        max_value=18,
+        max_value=9,
         value=int(st.session_state.B2)
     )
 
@@ -208,8 +204,8 @@ def manual_input_page():
     st.subheader("Part C - Subjective Symptoms")
     st.session_state.C = st.number_input(
         "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
-        min_value=0.0,
-        max_value=20.0,
+        min_value=0,
+        max_value=20,
         value=float(st.session_state.C)
     )
 
