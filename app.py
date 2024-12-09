@@ -121,7 +121,12 @@ def camera_page():
         <h2>📸 Upload a skin image or take a picture with your camera</h2>
     </div>
     """, unsafe_allow_html=True)
-    class_labels = ["AD", "Normal", "Others"]
+    class_labels = ["Mild", "Moderate", "Severe"]
+    severity_scores = {"Mild": 3, "Moderate": 6, "Severe": 9}
+
+    # Initialize B1 in session state if it doesn't exist
+    if 'B1' not in st.session_state:
+        st.session_state.B1 = 0
 
     camera_file = st.camera_input("", label_visibility="collapsed", key="camera_input")
     uploaded_file = st.file_uploader("or choose an image...", type=["jpg", "jpeg", "png"], key="file_uploader")
@@ -134,6 +139,7 @@ def camera_page():
     elif camera_file is not None:
         image_source = Image.open(camera_file).convert("RGB")
         image_placeholder.image(image_source, caption="Captured Image", use_column_width=True)
+    
     if image_source is not None:
         st.write("Classifying...")
         def preprocess(image):
@@ -145,7 +151,22 @@ def camera_page():
         prediction = model.predict(processed_image)
         predicted_class = np.argmax(prediction, axis=1)[0]
         class_label = class_labels[predicted_class]
+        severity_score = severity_scores[class_label]
+        
+        # Store the severity score in B1
+        st.session_state.B1 = severity_score
+        
         st.write(f"Prediction: {class_label}")
+        st.write(f"Severity Score (B1): {st.session_state.B1}")
+        
+        # Display a colored box based on severity
+        if class_label == "Mild":
+            st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Mild Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+        elif class_label == "Moderate":
+            st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Moderate Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+        else:
+            st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Severe Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+
     if uploaded_file or camera_file:
         st.session_state["uploaded_image"] = None
         st.session_state["captured_image"] = None
@@ -154,23 +175,37 @@ def manual_input_page():
     st.title("Manual SCORAD Input")
     st.header("Enter the SCORAD Intensity Information")
 
+    # Initialize B1 in session state if it doesn't exist
+    if 'B1' not in st.session_state:
+        st.session_state.B1 = 0
+
     col1, col2, col3 = st.columns([1, 2, 1])
     with col1:
-        st.write("### Guide")
-        st.markdown("DUMIDIKIT SA GITNA")
+        st.write("### Severity Guide")
+        st.markdown("""
+        - Mild: B1 = 3
+        - Moderate: B1 = 6
+        - Severe: B1 = 9
+        """)
 
     with col2:
         st.write("### Input")
-        scorad_value = st.text_input("Enter SCORAD Value: ")
+        severity = st.selectbox("Select Severity Level:", ["Mild", "Moderate", "Severe"])
+        st.session_state.B1 = {"Mild": 3, "Moderate": 6, "Severe": 9}[severity]
+        
         if st.button("Submit"):
-            if scorad_value.isdigit():
-                st.success(f"SCORAD Value Submitted: {scorad_value}")
-            else:
-                st.error("Invalid input. Please enter a valid number.")
+            st.success(f"Severity Level: {severity}")
+            st.success(f"B1 Score: {st.session_state.B1}")
 
     with col3:
         st.write("### Result")
-        st.write("Submitted SCORAD results will be displayed here. kung gagana HAHAHAH")
+        if 'severity' in locals():
+            if severity == "Mild":
+                st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Mild Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+            elif severity == "Moderate":
+                st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Moderate Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Severe Case (B1 = {st.session_state.B1})</div>', unsafe_allow_html=True)
 
 # Run the main app
 
