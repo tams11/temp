@@ -86,7 +86,7 @@ def main():
         with col1:
             if st.button("Home", key="home_button", use_container_width=True):
                 st.session_state.page = "home"
-            if st.button("Camera (Skin Classification)", key="camera_button", use_container_width=True):
+            if st.button("Camera (AD Intensity)", key="camera_button", use_container_width=True):
                 st.session_state.page = "camera"
             if st.button("Manual SCORAD Input", key="manual_input_button", use_container_width=True):
                 st.session_state.page = "manual_input"
@@ -208,8 +208,8 @@ def manual_input_page():
     st.subheader("Part C - Subjective Symptoms")
     st.session_state.C = st.number_input(
         "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
-        min_value=0,
-        max_value=20,
+        min_value=0.0,
+        max_value=20.0,
         value=float(st.session_state.C)
     )
 
