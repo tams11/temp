@@ -172,8 +172,7 @@ def camera_page():
         st.session_state["captured_image"] = None
         
 def manual_input_page():
-    # Create two columns: main content and rubrics
-    main_content, rubrics = st.columns([0.7, 0.3])
+    main_content, rubrics = st.columns([0.6, 0.4])
 
     # Main content column
     with main_content:

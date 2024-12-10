@@ -5,13 +5,13 @@
     color: #2c3e50;
     text-align: center;
     margin-bottom: 20px;
-    background: transparent; /* Remove background from container */
+    background: transparent;
     padding: 15px;
     border-radius: 10px;
 }
 
 .css-1d391kg h3 {
-    color: #1a1a1a; /* Dark color for better readability */
+    color: #1a1a1a;
     font-size: 24px;
     font-weight: bold;
     margin: 0;
@@ -22,17 +22,16 @@
     padding-bottom: 10px;
 }
 
-/* Custom styles for sidebar buttons */
 .stButton > button {
     width: 100% !important;
     margin: 5px 0 !important;
     padding: 10px 15px !important;
-    background-color: rgba(255, 255, 255, 0.25) !important; /* Slightly more opaque */
-    color: #1a1a1a !important; /* Darker text color for better readability */
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: #1a1a1a !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 8px !important;
     font-size: 16px !important;
-    font-weight: 600 !important; /* Slightly bolder text */
+    font-weight: 600 !important;
     transition: all 0.3s ease !important;
     backdrop-filter: blur(5px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
@@ -55,12 +54,10 @@ section[data-testid="stSidebar"] {
     backdrop-filter: blur(10px);
 }
 
-/* Make all text more readable */
 p, h1, h2, h3, h4, h5, h6, label, .stTextInput > div > div > input {
     color: #1a1a1a !important; /* Dark color for better readability */
 }
 
-/* Ensure form inputs and text are clearly visible */
 textarea, input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
     color: #1a1a1a !important;
     background-color: rgba(255, 255, 255, 0.9) !important;
@@ -92,7 +89,7 @@ h2 {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Navigation Buttons */
+
 .sidebar-button {
     background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
     color: black;
@@ -107,22 +104,20 @@ h2 {
     transition: all 0.3s ease-in-out;
 }
 
-/* Hover Effect for Navigation Buttons */
 .sidebar-button:hover {
-    background-color: rgba(255, 255, 255, 0.6); /* Lighter transparent white */
-    transform: scale(1.05); /* Slight zoom effect */
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
     color: black;
 }
 
-/* Get Started Button */
 .stButton > div {
     display: flex;
-    justify-content: center; /* Center the button */
+    justify-content: center;
     align-items: center;
 }
 
 .stButton button {
-    background-color: #ADD8E6; /* Blue background */
+    background-color: #ADD8E6;
     color: black;
     font-size: 18px;
     padding: 10px 20px;
@@ -130,31 +125,29 @@ h2 {
     border: none;
     cursor: pointer;
     font-weight: bold;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Hover Effect for Get Started Button */
 .stButton button:hover {
-background-color: #5d97d4; /* Darker blue */
-transform: scale(1.05); /* Slight zoom effect */
+background-color: #5d97d4;
+transform: scale(1.05);
 }
 
-/* Adjust Text Inside Button */
 .stButton button span {
     display: block;
-    text-align: center; /* Ensure text is centered */
+    text-align: center;
 }
 
 /* Section Content Styling */
 .content-section {
-    border: 2px solid wheat; /* Blue border */
+    border: 2px solid wheat;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.1); /* Slight transparency */
+    background-color: rgba(255, 255, 255, 0.1);
     color: black;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */ /* Subtle shadow effect */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .image-upload-container, .camera-container label {
@@ -163,32 +156,31 @@ transform: scale(1.05); /* Slight zoom effect */
 
 .stCameraInput {
     padding: 10px;
-    border: 2px solid #ffffff; /* White border */
+    border: 2px solid #ffffff;
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    background-color: rgba(255, 255, 255, 0.1);
     max-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Adjust Text Input Boxes */
 textarea, input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 8px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 1em;
     font-family: "Arial", sans-serif;
 }
 
 /* Homepage Gradient Background */
 body {
-    background: linear-gradient(135deg, #64D8FC, #FFAFBD); /* Smooth gradient background */
+    background: linear-gradient(135deg, #64D8FC, #FFAFBD);
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
@@ -201,20 +193,20 @@ body {
 
 @media (max-width: 768px) {
     .stCameraInput {
-        padding: 5px; /* Reduce padding for smaller screens */
-        border-width: 1px; /* Thinner border */
+        padding: 5px;
+        border-width: 1px;
     }
 }
 
 @media (max-width: 480px) {
     .stCameraInput {
-        padding: 3px; /* Minimal padding for very small screens */
-        border-width: 1px; /* Thinner border */
-        border-radius: 5px; /* Smaller rounded corners */
+        padding: 3px;
+        border-width: 1px;
+        border-radius: 5px;
     }
 }
 
-/* Right Panel Styles */
+
 .rubrics-panel {
     position: fixed;
     right: 0;
@@ -229,15 +221,14 @@ body {
     z-index: 100;
 }
 
-/* Main content adjustments */
+
 .main-content {
-    margin-left: 100px;  /* Space for left sidebar */
-    margin-right: 320px;  /* Space for right panel */
+    margin-left: 100px;
+    margin-right: 320px;
     padding: 20px;
-    max-width: calc(100% - 420px);  /* Adjust based on both panels */
+    max-width: calc(100% - 420px);
 }
 
-/* Rubrics styling */
 .rubrics-header {
     color: #1a1a1a;
     font-size: 20px;
@@ -260,25 +251,23 @@ body {
     padding: 10px !important;
 }
 
-/* Column styling */
 [data-testid="stHorizontalBlock"] {
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 1rem;
 }
 
-/* Rubrics column styling */
 [data-testid="column"]:last-child {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    padding: 1rem;
+    padding: 1.5rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     height: fit-content;
     position: sticky;
     top: 2rem;
+    min-width: 350px;
 }
 
-/* Expander styling */
 .streamlit-expanderHeader {
     background-color: rgba(255, 255, 255, 0.1) !important;
     border-radius: 8px !important;
@@ -293,7 +282,6 @@ body {
     padding: 1rem !important;
 }
 
-/* Table styling in rubrics */
 .rubrics-table {
     width: 100%;
     border-collapse: collapse;
@@ -307,15 +295,15 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Make tables in markdown more readable */
 table {
     width: 100%;
-    margin: 1rem 0;
+    margin: 0.75rem 0;
     border-collapse: collapse;
+    font-size: 0.95rem;
 }
 
 th, td {
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background-color: rgba(255, 255, 255, 0.05);
 }
@@ -325,15 +313,14 @@ th {
     font-weight: bold;
 }
 
-/* Form styling */
 [data-testid="stForm"] {
     background-color: rgba(255, 255, 255, 0.05);
     padding: 2rem;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 1rem;
 }
 
-/* Ensure the main content is centered between panels */
 .stApp > header {
     margin-left: 100px;
     margin-right: 320px;
