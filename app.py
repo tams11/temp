@@ -126,6 +126,8 @@ def camera_page():
     # Initialize B1 variable
     if 'B1' not in st.session_state:
         st.session_state.B1 = 0
+    if 'image_processed' not in st.session_state:
+        st.session_state.image_processed = False
 
     camera_file = st.camera_input("", label_visibility="collapsed", key="camera_input")
     uploaded_file = st.file_uploader("or choose an image...", type=["jpg", "jpeg", "png"], key="file_uploader")
@@ -154,6 +156,7 @@ def camera_page():
         
         # Score ng B1
         st.session_state.B1 = severity_score
+        st.session_state.image_processed = True
         
         if class_label == "Mild":
             st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
@@ -172,7 +175,7 @@ def manual_input_page():
     st.title("Manual SCORAD Input")
     st.header("Complete SCORAD Assessment")
 
-    # gawin ko sana manual input ng A, B2, C tapos formula ng SCORAD
+    # manual input ng A, B2, C tapos formula ng SCORAD
     if 'A' not in st.session_state:
         st.session_state.A = 0
     if 'B1' not in st.session_state:
@@ -181,6 +184,8 @@ def manual_input_page():
         st.session_state.B2 = 0
     if 'C' not in st.session_state:
         st.session_state.C = 0
+    if 'image_processed' not in st.session_state:
+        st.session_state.image_processed = False
 
     # Part A - Area
     st.subheader("Part A - Area of Extent Score")
@@ -190,6 +195,19 @@ def manual_input_page():
         max_value=100,
         value=int(st.session_state.A)
     )
+
+    # Part B1 - Only show if no image was processed
+    if not st.session_state.image_processed:
+        st.subheader("Part B1 - Intensity Score")
+        st.session_state.B1 = st.number_input(
+            "Input score for Part B1 of SCORAD test (0-9):",
+            min_value=0,
+            max_value=9,
+            value=int(st.session_state.B1)
+        )
+    else:
+        st.subheader("Part B1 - Intensity Score")
+        st.info(f"B1 score from image analysis: {st.session_state.B1}")
 
     # Part B2 - Intensity
     st.subheader("Part B2 - Additional Intensity Criteria")
