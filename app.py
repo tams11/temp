@@ -109,7 +109,7 @@ def home_page():
         <h2>Data Privacy Act</h2>
         <p>Tinanggal ko yung ano ah</p>
         <p>"Get Started" na button</p>
-        <p>Diko kasi alam pano icenter nadadamay yung buttons sa gilid</p>
+        <p></p>
     </div>
     """, unsafe_allow_html=True)
         
@@ -175,7 +175,51 @@ def manual_input_page():
     st.title("Manual SCORAD Input")
     st.header("Complete SCORAD Assessment")
 
-    # manual input ng A, B2, C tapos formula ng SCORAD
+    # manual input ng A, B2, C tapos formula ng SCORAD na may sidebar ng rubrics
+    with st.sidebar:
+        with st.expander("📏 Area of Extent Rubrics (Part A)"):
+            st.markdown("""
+            | % Area | Description | Guidelines |
+            |--------|-------------|------------|
+            | 0% | No area affected | No visible signs of atopic dermatitis |
+            | 1-10% | Minimal area affected | Small patches or localized areas (e.g., face, elbow, hand) |
+            | 11-30% | Mildly affected area | Multiple small areas or slightly larger region |
+            | 31-50% | Moderately affected area | Significant portions of body affected |
+            | 51-70% | Severely affected area | Over half the body surface affected |
+            | 71-100% | Very severely affected | Almost entire body affected |
+            """)
+
+        with st.expander("🌡️ Intensity Criteria (Part B1 & B2)"):
+            st.markdown("""
+            Score each criterion from 0-3:
+            - 0: None
+            - 1: Mild
+            - 2: Moderate
+            - 3: Severe
+
+            Criteria to assess:
+            1. Erythema (redness)
+            2. Edema/papulation
+            3. Oozing/crusting
+            4. Excoriation
+            5. Lichenification
+            6. Dryness
+            """)
+
+        with st.expander("😴 Subjective Symptoms Rubrics (Part C)"):
+            st.markdown("""
+            | Score | Impact | Guidelines |
+            |-------|---------|------------|
+            | 0 | No impact | No itching or sleep disturbance |
+            | 1-5 | Mild | Occasional itching, sleep rarely disturbed |
+            | 6-10 | Moderate | Frequent itching, sleep occasionally disrupted |
+            | 11-15 | Severe | Persistent itching, sleep frequently disturbed |
+            | 16-20 | Very severe | Constant itching, sleep severely impaired |
+
+            *Combine both itchiness and sleep disturbance into a single score (0-20)*
+            """)
+
+    # Initialize variables in session state if they don't exist
     if 'A' not in st.session_state:
         st.session_state.A = 0
     if 'B1' not in st.session_state:
