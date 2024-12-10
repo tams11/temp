@@ -351,3 +351,32 @@ th {
     padding: 0 !important;
 }
 
+/* Criteria section styling */
+.streamlit-expanderContent {
+    padding: 1rem !important;
+}
+
+.streamlit-expanderContent p {
+    margin-bottom: 1rem !important;
+}
+
+/* Add spacing between criteria groups */
+.streamlit-expanderContent strong {
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a !important;
+    font-size: 1rem;
+}
+
+/* Style the scoring scale */
+.streamlit-expanderContent ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.streamlit-expanderContent li {
+    margin-bottom: 0.25rem;
+    color: #1a1a1a !important;
+}
+

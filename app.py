@@ -292,17 +292,14 @@ def manual_input_page():
             - 2: Moderate
             - 3: Severe
 
-            **Criteria:**
-            
-            **B1:**
+            **B1 Criteria:**
             1. Redness
             2. Oozing/crusting
             3. Scratchmarks
-            
-            **B2:**
-            
+
+            **B2 Criteria:**
             4. Swelling
-            5. Skin 
+            5. Skin
             6. Dryness
             """)
 
