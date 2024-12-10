@@ -214,3 +214,64 @@ body {
     }
 }
 
+/* Right Panel Styles */
+.right-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.right-panel h3 {
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(44, 62, 80, 0.3);
+}
+
+/* Main content adjustments */
+.main-content {
+    margin-right: 320px;  /* Adjust based on right panel width */
+    padding: 20px;
+}
+
+/* Expander styling */
+.streamlit-expander {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+}
+
+.streamlit-expander .streamlit-expanderHeader {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+}
+
+/* Table styling in rubrics */
+.rubrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.rubrics-table th, .rubrics-table td {
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.rubrics-table th {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+}
+

@@ -172,33 +172,130 @@ def camera_page():
         st.session_state["captured_image"] = None
         
 def manual_input_page():
-    st.title("Manual SCORAD Input")
-    st.header("Complete SCORAD Assessment")
+    # Create columns for layout
+    main_col, right_col = st.columns([2, 1])
 
-    # manual input ng A, B2, C tapos formula ng SCORAD na may sidebar ng rubrics
-    with st.sidebar:
-        with st.expander("📏 Area of Extent Rubrics (Part A)"):
+    with main_col:
+        st.title("Manual SCORAD Input")
+        st.header("Complete SCORAD Assessment")
+
+        # Initialize variables in session state if they don't exist
+        if 'A' not in st.session_state:
+            st.session_state.A = 0
+        if 'B1' not in st.session_state:
+            st.session_state.B1 = 0
+        if 'B2' not in st.session_state:
+            st.session_state.B2 = 0
+        if 'C' not in st.session_state:
+            st.session_state.C = 0
+        if 'image_processed' not in st.session_state:
+            st.session_state.image_processed = False
+
+        # Create a form for all inputs
+        with st.form("scorad_form"):
+            # Part A - Area
+            st.subheader("Part A - Area of Extent Score")
+            A_input = st.number_input(
+                "Input score for Part A (Extent) of SCORAD test (0-100):",
+                min_value=0,
+                max_value=100,
+                value=int(st.session_state.A)
+            )
+
+            # Part B1 - Only show if no image was processed
+            if not st.session_state.image_processed:
+                st.subheader("Part B1 - Intensity Score")
+                B1_input = st.number_input(
+                    "Input score for Part B1 of SCORAD test (0-9):",
+                    min_value=0,
+                    max_value=9,
+                    value=int(st.session_state.B1)
+                )
+            else:
+                st.subheader("Part B1 - Intensity Score")
+                st.info(f"B1 score from image analysis: {st.session_state.B1}")
+                B1_input = st.session_state.B1
+
+            # Part B2 - Intensity
+            st.subheader("Part B2 - Additional Intensity Criteria")
+            B2_input = st.number_input(
+                "Input score for Part B2 of SCORAD test (0-9):",
+                min_value=0,
+                max_value=9,
+                value=int(st.session_state.B2)
+            )
+
+            # Part C - Subjective symptoms
+            st.subheader("Part C - Subjective Symptoms")
+            C_input = st.number_input(
+                "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
+                min_value=0,
+                max_value=20,
+                value=int(st.session_state.C)
+            )
+
+            # Submit button
+            submitted = st.form_submit_button("Calculate Total SCORAD")
+
+            if submitted:
+                # Update session state values
+                st.session_state.A = A_input
+                if not st.session_state.image_processed:
+                    st.session_state.B1 = B1_input
+                st.session_state.B2 = B2_input
+                st.session_state.C = C_input
+
+                # Convert to float for calculation to maintain precision
+                A = float(st.session_state.A)
+                B1 = float(st.session_state.B1)
+                B2 = float(st.session_state.B2)
+                C = float(st.session_state.C)
+                
+                # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
+                total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
+                st.success(f"Total SCORAD Score: {total_scorad:.2f}")
+                
+                # Interpret SCORAD score
+                if total_scorad < 25:
+                    severity = "Mild"
+                    color = "#90EE90"
+                elif total_scorad < 50:
+                    severity = "Moderate"
+                    color = "#FFD700"
+                else:
+                    severity = "Severe"
+                    color = "#FF6B6B"
+                    
+                st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
+
+    # Right panel with rubrics
+    with right_col:
+        st.markdown('<div class="right-panel">', unsafe_allow_html=True)
+        
+        st.markdown("### 📏 Scoring Guidelines")
+        
+        with st.expander("Area of Extent (Part A)"):
             st.markdown("""
-            | % Area | Description | Guidelines |
-            |--------|-------------|------------|
-            | 0% | No area affected | No visible signs of atopic dermatitis |
-            | 1-10% | Minimal area affected | Small patches or localized areas (e.g., face, elbow, hand) |
-            | 11-30% | Mildly affected area | Multiple small areas or slightly larger region |
-            | 31-50% | Moderately affected area | Significant portions of body affected |
-            | 51-70% | Severely affected area | Over half the body surface affected |
-            | 71-100% | Very severely affected | Almost entire body affected |
+            | % Area | Description |
+            |--------|-------------|
+            | 0% | No area affected |
+            | 1-10% | Minimal area |
+            | 11-30% | Mildly affected |
+            | 31-50% | Moderately affected |
+            | 51-70% | Severely affected |
+            | 71-100% | Very severely affected |
             """)
 
-        with st.expander("🌡️ Intensity Criteria (Part B1 & B2)"):
+        with st.expander("Intensity Criteria (B1 & B2)"):
             st.markdown("""
-            Score each criterion from 0-3:
+            Score each from 0-3:
             - 0: None
             - 1: Mild
             - 2: Moderate
             - 3: Severe
 
-            Criteria to assess:
-            1. Erythema (redness)
+            **Criteria:**
+            1. Erythema
             2. Edema/papulation
             3. Oozing/crusting
             4. Excoriation
@@ -206,107 +303,20 @@ def manual_input_page():
             6. Dryness
             """)
 
-        with st.expander("😴 Subjective Symptoms Rubrics (Part C)"):
+        with st.expander("Subjective Symptoms (Part C)"):
             st.markdown("""
-            | Score | Impact | Guidelines |
-            |-------|---------|------------|
-            | 0 | No impact | No itching or sleep disturbance |
-            | 1-5 | Mild | Occasional itching, sleep rarely disturbed |
-            | 6-10 | Moderate | Frequent itching, sleep occasionally disrupted |
-            | 11-15 | Severe | Persistent itching, sleep frequently disturbed |
-            | 16-20 | Very severe | Constant itching, sleep severely impaired |
+            | Score | Impact |
+            |-------|---------|
+            | 0 | No impact |
+            | 1-5 | Mild |
+            | 6-10 | Moderate |
+            | 11-15 | Severe |
+            | 16-20 | Very severe |
 
-            *Combine both itchiness and sleep disturbance into a single score (0-20)*
+            *Combine itchiness and sleep disturbance (0-20)*
             """)
-
-    # Initialize variables in session state if they don't exist
-    if 'A' not in st.session_state:
-        st.session_state.A = 0
-    if 'B1' not in st.session_state:
-        st.session_state.B1 = 0
-    if 'B2' not in st.session_state:
-        st.session_state.B2 = 0
-    if 'C' not in st.session_state:
-        st.session_state.C = 0
-    if 'image_processed' not in st.session_state:
-        st.session_state.image_processed = False
-
-    # Create a form for all inputs
-    with st.form("scorad_form"):
-        # Part A - Area
-        st.subheader("Part A - Area of Extent Score")
-        A_input = st.number_input(
-            "Input score for Part A (Extent) of SCORAD test (0-100):",
-            min_value=0,
-            max_value=100,
-            value=int(st.session_state.A)
-        )
-
-        # Part B1 - Only show if no image was processed
-        if not st.session_state.image_processed:
-            st.subheader("Part B1 - Intensity Score")
-            B1_input = st.number_input(
-                "Input score for Part B1 of SCORAD test (0-9):",
-                min_value=0,
-                max_value=9,
-                value=int(st.session_state.B1)
-            )
-        else:
-            st.subheader("Part B1 - Intensity Score")
-            st.info(f"B1 score from image analysis: {st.session_state.B1}")
-            B1_input = st.session_state.B1
-
-        # Part B2 - Intensity
-        st.subheader("Part B2 - Additional Intensity Criteria")
-        B2_input = st.number_input(
-            "Input score for Part B2 of SCORAD test (0-9):",
-            min_value=0,
-            max_value=9,
-            value=int(st.session_state.B2)
-        )
-
-        # Part C - Subjective symptoms
-        st.subheader("Part C - Subjective Symptoms")
-        C_input = st.number_input(
-            "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
-            min_value=0,
-            max_value=20,
-            value=int(st.session_state.C)
-        )
-
-        # Submit button
-        submitted = st.form_submit_button("Calculate Total SCORAD")
-
-        if submitted:
-            # Update session state values
-            st.session_state.A = A_input
-            if not st.session_state.image_processed:
-                st.session_state.B1 = B1_input
-            st.session_state.B2 = B2_input
-            st.session_state.C = C_input
-
-            # Convert to float for calculation to maintain precision
-            A = float(st.session_state.A)
-            B1 = float(st.session_state.B1)
-            B2 = float(st.session_state.B2)
-            C = float(st.session_state.C)
             
-            # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
-            total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
-            st.success(f"Total SCORAD Score: {total_scorad:.2f}")
-            
-            # Interpret SCORAD score
-            if total_scorad < 25:
-                severity = "Mild"
-                color = "#90EE90"
-            elif total_scorad < 50:
-                severity = "Moderate"
-                color = "#FFD700"
-            else:
-                severity = "Severe"
-                color = "#FF6B6B"
-                
-            st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
