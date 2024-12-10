@@ -188,7 +188,7 @@ def manual_input_page():
         "Input score for Part A (Extent) of SCORAD test (0-100):",
         min_value=0,
         max_value=100,
-        value=float(st.session_state.A)
+        value=int(st.session_state.A)
     )
 
     # Part B2 - Intensity
@@ -206,12 +206,18 @@ def manual_input_page():
         "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
         min_value=0,
         max_value=20,
-        value=float(st.session_state.C)
+        value=int(st.session_state.C)
     )
 
     if st.button("Calculate Total SCORAD"):
+        # Convert to float for calculation to maintain precision
+        A = float(st.session_state.A)
+        B1 = float(st.session_state.B1)
+        B2 = float(st.session_state.B2)
+        C = float(st.session_state.C)
+        
         # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
-        total_scorad = (st.session_state.A / 5) + (7 * (st.session_state.B1 + st.session_state.B2) / 2) + st.session_state.C
+        total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
         st.success(f"Total SCORAD Score: {total_scorad:.2f}")
         
         # Interpret SCORAD score
