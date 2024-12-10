@@ -145,7 +145,6 @@ transform: scale(1.05);
     text-align: center;
 }
 
-/* Section Content Styling */
 .content-section {
     border: 2px solid wheat;
     border-radius: 8px;
@@ -263,12 +262,12 @@ body {
 [data-testid="stHorizontalBlock"] {
     gap: 1.5rem;
     padding: 1rem;
-    width: 100%;
-    max-width: none !important;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 [data-testid="column"]:first-child {
-    padding: 1rem 2rem;
+    padding: 1rem;
     min-width: 600px;
 }
 
@@ -282,7 +281,6 @@ body {
     position: sticky;
     top: 2rem;
     min-width: 400px;
-    margin-right: 1rem;
 }
 
 .streamlit-expanderHeader {
@@ -344,9 +342,9 @@ th {
 }
 
 .block-container {
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 2rem 1rem !important;
 }
 
 [data-testid="stHeader"] {
