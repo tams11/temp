@@ -187,69 +187,82 @@ def manual_input_page():
     if 'image_processed' not in st.session_state:
         st.session_state.image_processed = False
 
-    # Part A - Area
-    st.subheader("Part A - Area of Extent Score")
-    st.session_state.A = st.number_input(
-        "Input score for Part A (Extent) of SCORAD test (0-100):",
-        min_value=0,
-        max_value=100,
-        value=int(st.session_state.A)
-    )
+    # Create a form for all inputs
+    with st.form("scorad_form"):
+        # Part A - Area
+        st.subheader("Part A - Area of Extent Score")
+        A_input = st.number_input(
+            "Input score for Part A (Extent) of SCORAD test (0-100):",
+            min_value=0,
+            max_value=100,
+            value=int(st.session_state.A)
+        )
 
-    # Part B1 - Only show if no image was processed
-    if not st.session_state.image_processed:
-        st.subheader("Part B1 - Intensity Score")
-        st.session_state.B1 = st.number_input(
-            "Input score for Part B1 of SCORAD test (0-9):",
+        # Part B1 - Only show if no image was processed
+        if not st.session_state.image_processed:
+            st.subheader("Part B1 - Intensity Score")
+            B1_input = st.number_input(
+                "Input score for Part B1 of SCORAD test (0-9):",
+                min_value=0,
+                max_value=9,
+                value=int(st.session_state.B1)
+            )
+        else:
+            st.subheader("Part B1 - Intensity Score")
+            st.info(f"B1 score from image analysis: {st.session_state.B1}")
+            B1_input = st.session_state.B1
+
+        # Part B2 - Intensity
+        st.subheader("Part B2 - Additional Intensity Criteria")
+        B2_input = st.number_input(
+            "Input score for Part B2 of SCORAD test (0-9):",
             min_value=0,
             max_value=9,
-            value=int(st.session_state.B1)
+            value=int(st.session_state.B2)
         )
-    else:
-        st.subheader("Part B1 - Intensity Score")
-        st.info(f"B1 score from image analysis: {st.session_state.B1}")
 
-    # Part B2 - Intensity
-    st.subheader("Part B2 - Additional Intensity Criteria")
-    st.session_state.B2 = st.number_input(
-        "Input score for Part B2 of SCORAD test (0-9):",
-        min_value=0,
-        max_value=9,
-        value=int(st.session_state.B2)
-    )
+        # Part C - Subjective symptoms
+        st.subheader("Part C - Subjective Symptoms")
+        C_input = st.number_input(
+            "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
+            min_value=0,
+            max_value=20,
+            value=int(st.session_state.C)
+        )
 
-    # Part C - Subjective symptoms
-    st.subheader("Part C - Subjective Symptoms")
-    st.session_state.C = st.number_input(
-        "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
-        min_value=0,
-        max_value=20,
-        value=int(st.session_state.C)
-    )
+        # Submit button
+        submitted = st.form_submit_button("Calculate Total SCORAD")
 
-    if st.button("Calculate Total SCORAD"):
-        # Convert to float for calculation to maintain precision
-        A = float(st.session_state.A)
-        B1 = float(st.session_state.B1)
-        B2 = float(st.session_state.B2)
-        C = float(st.session_state.C)
-        
-        # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
-        total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
-        st.success(f"Total SCORAD Score: {total_scorad:.2f}")
-        
-        # Interpret SCORAD score
-        if total_scorad < 25:
-            severity = "Mild"
-            color = "#90EE90"
-        elif total_scorad < 50:
-            severity = "Moderate"
-            color = "#FFD700"
-        else:
-            severity = "Severe"
-            color = "#FF6B6B"
+        if submitted:
+            # Update session state values
+            st.session_state.A = A_input
+            if not st.session_state.image_processed:
+                st.session_state.B1 = B1_input
+            st.session_state.B2 = B2_input
+            st.session_state.C = C_input
+
+            # Convert to float for calculation to maintain precision
+            A = float(st.session_state.A)
+            B1 = float(st.session_state.B1)
+            B2 = float(st.session_state.B2)
+            C = float(st.session_state.C)
             
-        st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
+            # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
+            total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
+            st.success(f"Total SCORAD Score: {total_scorad:.2f}")
+            
+            # Interpret SCORAD score
+            if total_scorad < 25:
+                severity = "Mild"
+                color = "#90EE90"
+            elif total_scorad < 50:
+                severity = "Moderate"
+                color = "#FFD700"
+            else:
+                severity = "Severe"
+                color = "#FF6B6B"
+                
+            st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
