@@ -298,6 +298,7 @@ def manual_input_page():
             3. Scratchmarks
 
             **B2 Criteria:**
+
             4. Swelling
             5. Skin
             6. Dryness

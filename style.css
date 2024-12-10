@@ -364,9 +364,11 @@ th {
 .streamlit-expanderContent strong {
     display: block;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.5rem;
     color: #1a1a1a !important;
     font-size: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Style the scoring scale */
@@ -378,5 +380,11 @@ th {
 .streamlit-expanderContent li {
     margin-bottom: 0.25rem;
     color: #1a1a1a !important;
+}
+
+/* Ensure proper line breaks in criteria lists */
+.streamlit-expanderContent p {
+    white-space: pre-line !important;
+    line-height: 1.6 !important;
 }
 
