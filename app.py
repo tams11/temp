@@ -293,11 +293,14 @@ def manual_input_page():
             - 3: Severe
 
             **Criteria:**
-            1. Erythema
-            2. Edema/papulation
-            3. Oozing/crusting
-            4. Excoriation
-            5. Lichenification
+            <strong>B1</strong>
+            1. Redness
+            2. Oozing/crusting
+            3. Scratchmarks
+            
+            <strong>B2</strong>
+            4. Swelling
+            5. Skin thickening
             6. Dryness
             """)
 
