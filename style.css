@@ -260,6 +260,39 @@ body {
     padding: 10px !important;
 }
 
+/* Column styling */
+[data-testid="stHorizontalBlock"] {
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Rubrics column styling */
+[data-testid="column"]:last-child {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 0.5rem 1rem !important;
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+}
+
+.streamlit-expanderContent {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 0 0 8px 8px !important;
+    padding: 1rem !important;
+}
+
 /* Table styling in rubrics */
 .rubrics-table {
     width: 100%;
@@ -274,9 +307,30 @@ body {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-.rubrics-table th {
+/* Make tables in markdown more readable */
+table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+th {
     background-color: rgba(255, 255, 255, 0.1);
     font-weight: bold;
+}
+
+/* Form styling */
+[data-testid="stForm"] {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Ensure the main content is centered between panels */
