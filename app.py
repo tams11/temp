@@ -270,7 +270,7 @@ def manual_input_page():
 
     # Rubrics column
     with rubrics:
-        st.markdown("### 📏 Scoring Guidelines")
+        st.markdown("### Scoring Guidelines")
         
         with st.expander("Area of Extent (Part A)", expanded=True):
             st.markdown("""
