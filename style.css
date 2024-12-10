@@ -215,7 +215,7 @@ body {
 }
 
 /* Right Panel Styles */
-.right-panel {
+.rubrics-panel {
     position: fixed;
     right: 0;
     top: 0;
@@ -226,34 +226,38 @@ body {
     padding: 20px;
     overflow-y: auto;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.right-panel h3 {
-    color: #1a1a1a;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 2px solid rgba(44, 62, 80, 0.3);
+    z-index: 100;
 }
 
 /* Main content adjustments */
 .main-content {
-    margin-right: 320px;  /* Adjust based on right panel width */
+    margin-left: 100px;  /* Space for left sidebar */
+    margin-right: 320px;  /* Space for right panel */
     padding: 20px;
+    max-width: calc(100% - 420px);  /* Adjust based on both panels */
 }
 
-/* Expander styling */
-.streamlit-expander {
+/* Rubrics styling */
+.rubrics-header {
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(44, 62, 80, 0.3);
+}
+
+.rubrics-expander {
     background-color: rgba(255, 255, 255, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 8px !important;
     margin-bottom: 10px !important;
 }
 
-.streamlit-expander .streamlit-expanderHeader {
+.rubrics-expander .streamlit-expanderHeader {
     color: #1a1a1a !important;
     font-weight: 600 !important;
+    padding: 10px !important;
 }
 
 /* Table styling in rubrics */
@@ -273,5 +277,11 @@ body {
 .rubrics-table th {
     background-color: rgba(255, 255, 255, 0.1);
     font-weight: bold;
+}
+
+/* Ensure the main content is centered between panels */
+.stApp > header {
+    margin-left: 100px;
+    margin-right: 320px;
 }
 

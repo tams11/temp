@@ -172,25 +172,25 @@ def camera_page():
         st.session_state["captured_image"] = None
         
 def manual_input_page():
-    # Create columns for layout
-    main_col, right_col = st.columns([2, 1])
+    st.title("Manual SCORAD Input")
+    st.header("Complete SCORAD Assessment")
 
-    with main_col:
-        st.title("Manual SCORAD Input")
-        st.header("Complete SCORAD Assessment")
+    # Initialize variables in session state if they don't exist
+    if 'A' not in st.session_state:
+        st.session_state.A = 0
+    if 'B1' not in st.session_state:
+        st.session_state.B1 = 0
+    if 'B2' not in st.session_state:
+        st.session_state.B2 = 0
+    if 'C' not in st.session_state:
+        st.session_state.C = 0
+    if 'image_processed' not in st.session_state:
+        st.session_state.image_processed = False
 
-        # Initialize variables in session state if they don't exist
-        if 'A' not in st.session_state:
-            st.session_state.A = 0
-        if 'B1' not in st.session_state:
-            st.session_state.B1 = 0
-        if 'B2' not in st.session_state:
-            st.session_state.B2 = 0
-        if 'C' not in st.session_state:
-            st.session_state.C = 0
-        if 'image_processed' not in st.session_state:
-            st.session_state.image_processed = False
-
+    # Create main content container
+    with st.container():
+        st.markdown('<div class="main-content">', unsafe_allow_html=True)
+        
         # Create a form for all inputs
         with st.form("scorad_form"):
             # Part A - Area
@@ -267,14 +267,18 @@ def manual_input_page():
                     color = "#FF6B6B"
                     
                 st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # Right panel with rubrics
-    with right_col:
-        st.markdown('<div class="right-panel">', unsafe_allow_html=True)
-        
-        st.markdown("### 📏 Scoring Guidelines")
-        
-        with st.expander("Area of Extent (Part A)"):
+    st.markdown("""
+        <div class="rubrics-panel">
+            <div class="rubrics-header">📏 Scoring Guidelines</div>
+        """, unsafe_allow_html=True)
+    
+    # Create container for rubrics
+    with st.container():
+        with st.expander("Area of Extent (Part A)", expanded=True):
             st.markdown("""
             | % Area | Description |
             |--------|-------------|
@@ -286,7 +290,7 @@ def manual_input_page():
             | 71-100% | Very severely affected |
             """)
 
-        with st.expander("Intensity Criteria (B1 & B2)"):
+        with st.expander("Intensity Criteria (B1 & B2)", expanded=True):
             st.markdown("""
             Score each from 0-3:
             - 0: None
@@ -303,7 +307,7 @@ def manual_input_page():
             6. Dryness
             """)
 
-        with st.expander("Subjective Symptoms (Part C)"):
+        with st.expander("Subjective Symptoms (Part C)", expanded=True):
             st.markdown("""
             | Score | Impact |
             |-------|---------|
@@ -315,8 +319,8 @@ def manual_input_page():
 
             *Combine itchiness and sleep disturbance (0-20)*
             """)
-            
-        st.markdown('</div>', unsafe_allow_html=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
