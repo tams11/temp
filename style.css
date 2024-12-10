@@ -6,8 +6,9 @@
     text-align: center;
     margin-bottom: 20px;
     background: transparent;
-    padding: 15px;
+    padding: 1rem;
     border-radius: 10px;
+    width: 100%;
 }
 
 .css-1d391kg h3 {
@@ -52,6 +53,11 @@
 section[data-testid="stSidebar"] {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
+}
+
+section[data-testid="stSidebar"] > div {
+    width: 100%;
+    padding: 0;
 }
 
 p, h1, h2, h3, h4, h5, h6, label, .stTextInput > div > div > input {
@@ -189,10 +195,9 @@ body {
 
 .stApp {
     background: linear-gradient(to right, #3A1C71, #D76D77, #FFAF7B);
-    max-width: 1400px !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -263,7 +268,7 @@ body {
 }
 
 [data-testid="column"]:first-child {
-    padding: 1rem;
+    padding: 1rem 2rem;
     min-width: 600px;
 }
 
@@ -277,6 +282,7 @@ body {
     position: sticky;
     top: 2rem;
     min-width: 400px;
+    margin-right: 1rem;
 }
 
 .streamlit-expanderHeader {
@@ -338,8 +344,12 @@ th {
 }
 
 .block-container {
-    max-width: none !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+[data-testid="stHeader"] {
+    padding: 0 !important;
 }
 
