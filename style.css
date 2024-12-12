@@ -36,6 +36,11 @@
     transition: all 0.3s ease !important;
     backdrop-filter: blur(5px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+    white-space: nowrap !important;
+    height: auto !important;
+    line-height: normal !important;
+    display: block !important;
+    overflow: visible !important;
 }
 
 .stButton > button:hover {
@@ -386,5 +391,14 @@ th {
 .streamlit-expanderContent p {
     white-space: pre-line !important;
     line-height: 1.6 !important;
+}
+
+/* Add responsive styles for mobile */
+@media (max-width: 768px) {
+    .stButton > button {
+        font-size: 14px !important;  /* Slightly smaller font on mobile */
+        padding: 8px 12px !important; /* Slightly smaller padding */
+        margin: 4px 0 !important;    /* Adjust vertical spacing */
+    }
 }
 

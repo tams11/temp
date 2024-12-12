@@ -274,14 +274,14 @@ def manual_input_page():
         
         with st.expander("Area of Extent (Part A)", expanded=True):
             st.markdown("""
-            | % Area | Description |
-            |--------|-------------|
-            | 0% | No area affected |
-            | 1-10% | Minimal area |
-            | 11-30% | Mildly affected |
-            | 31-50% | Moderately affected |
-            | 51-70% | Severely affected |
-            | 71-100% | Very severely affected |
+            | Percentage | Description | Guidelines |
+            |------------|-------------|------------|
+            | 0% | No area affected | No visible signs of atopic dermatitis. |
+            | 1-10% | Minimal area affected | Small patches or localized areas (e.g., a small portion of the face, one elbow, or one hand). |
+            | 11-30% | Mildly affected area | Multiple small areas affected or a slightly larger region (e.g., a leg or part of the torso). |
+            | 31-50% | Moderately affected area | Significant portions of the body affected, covering a large part of the arms, legs, or torso. |
+            | 51-70% | Severely affected area | Over half the body surface affected, including multiple large areas (e.g., both arms and legs). |
+            | 71-100% | Very severely affected, generalized dermatitis | Almost the entire body affected, including widespread involvement of the face, limbs, and trunk. |
             """)
 
         with st.expander("Intensity Criteria (B1 & B2)", expanded=True):
@@ -300,21 +300,21 @@ def manual_input_page():
             **B2 Criteria:**
 
             4. Swelling
-            5. Skin
+            5. Thickening
             6. Dryness
             """)
 
         with st.expander("Subjective Symptoms (Part C)", expanded=True):
             st.markdown("""
-            | Score | Impact |
-            |-------|---------|
-            | 0 | No impact |
-            | 1-5 | Mild |
-            | 6-10 | Moderate |
-            | 11-15 | Severe |
-            | 16-20 | Very severe |
+            Patients should evaluate both itchiness and sleep disturbance together, as these factors often influence each other. The score reflects the overall impact of atopic dermatitis on comfort and rest.
 
-            *Combine itchiness and sleep disturbance (0-20)*
+            | Score | Description | Guidelines |
+            |-------|-------------|------------|
+            | 0 | No impact | No itching or sleep disturbance. Sleep is uninterrupted, and there is no discomfort. |
+            | 1-5 | Mild impact | Occasional itching with minimal discomfort. Sleep is rarely disturbed and easy to resume after interruptions. |
+            | 6-10 | Moderate impact | Frequent itching causing noticeable discomfort. Sleep is occasionally disrupted, with some difficulty returning to sleep. |
+            | 11-15 | Severe impact | Persistent and intense itching that significantly disrupts daily comfort. Sleep is frequently disturbed, leading to fatigue or reduced daytime productivity. |
+            | 16-20 | Very severe impact | Constant, unbearable itching causing extreme discomfort. Sleep is severely impaired or nearly impossible, leading to exhaustion and a serious impact on life. |
             """)
 
 if __name__ == "__main__":
