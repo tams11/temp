@@ -219,3 +219,73 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     }
 }
 
+/* Rubrics Panel Styling */
+[data-testid="stExpander"] {
+    background-color: rgba(139, 0, 0, 0.7) !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Expander Header */
+.streamlit-expanderHeader {
+    color: #FFD700 !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    padding: 1rem !important;
+    background-color: rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Expander Content */
+.streamlit-expanderContent {
+    padding: 1rem !important;
+    background-color: transparent !important;
+}
+
+/* Table Styling */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 1rem 0 !important;
+    background-color: rgba(139, 0, 0, 0.5) !important;
+}
+
+th {
+    background-color: rgba(255, 215, 0, 0.1) !important;
+    color: #FFD700 !important;
+    font-weight: bold !important;
+    padding: 0.75rem !important;
+    text-align: left !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+td {
+    color: white !important;
+    padding: 0.75rem !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Table row hover effect */
+tr:hover td {
+    background-color: rgba(255, 215, 0, 0.05) !important;
+}
+
+/* List styling in rubrics */
+.streamlit-expanderContent ul {
+    list-style-type: none !important;
+    padding-left: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+.streamlit-expanderContent li {
+    color: white !important;
+    padding: 0.5rem 0 !important;
+    margin-left: 1rem !important;
+}
+
+/* Score ranges in rubrics */
+.streamlit-expanderContent strong {
+    color: #FFD700 !important;
+    font-weight: bold !important;
+}
+
