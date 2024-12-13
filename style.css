@@ -219,12 +219,24 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     }
 }
 
+/* Main content and rubrics layout */
+[data-testid="column"][data-column-width="0.6"] {
+    width: 55% !important;
+    min-width: 55% !important;
+}
+
+[data-testid="column"][data-column-width="0.4"] {
+    width: 45% !important;
+    min-width: 45% !important;
+}
+
 /* Rubrics Panel Styling */
 [data-testid="stExpander"] {
     background-color: rgba(139, 0, 0, 0.7) !important;
     border: 2px solid #FFD700 !important;
     border-radius: 8px !important;
     margin-bottom: 1rem !important;
+    min-width: 400px !important;
 }
 
 /* Expander Header */
@@ -251,12 +263,13 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     font-size: 0.95rem !important;
 }
 
-/* Table Styling */
+/* Table Styling for better width distribution */
 table {
     width: 100% !important;
     border-collapse: collapse !important;
     font-size: 0.9rem !important;
     table-layout: fixed !important;
+    min-width: 380px !important;
 }
 
 th {
@@ -278,31 +291,31 @@ td {
     overflow: hidden !important;
 }
 
-/* Fixed column widths for Part A */
+/* Adjust column widths for better space usage */
 [aria-label="Area of Extent (Part A)"] td:first-child,
 [aria-label="Area of Extent (Part A)"] th:first-child {
-    width: 15% !important;
+    width: 12% !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:nth-child(2),
 [aria-label="Area of Extent (Part A)"] th:nth-child(2) {
-    width: 25% !important;
+    width: 23% !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:last-child,
 [aria-label="Area of Extent (Part A)"] th:last-child {
-    width: 60% !important;
+    width: 65% !important;
 }
 
-/* Fixed column widths for Part C */
+/* Part C column adjustments */
 [aria-label="Subjective Symptoms (Part C)"] td:first-child,
 [aria-label="Subjective Symptoms (Part C)"] th:first-child {
-    width: 80px !important;
+    width: 70px !important;
 }
 
 [aria-label="Subjective Symptoms (Part C)"] td:nth-child(2),
 [aria-label="Subjective Symptoms (Part C)"] th:nth-child(2) {
-    width: 120px !important;
+    width: 100px !important;
 }
 
 /* Text wrapping */
