@@ -59,7 +59,6 @@ section[data-testid="stSidebar"] {
     background: rgba(139, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     border-right: 2px solid #FFD700;
-    transition: all 0.3s ease;
 }
 
 section[data-testid="stSidebar"] > div {
@@ -76,63 +75,56 @@ section[data-testid="stSidebar"] .stButton {
 }
 
 section[data-testid="stSidebar"] .stButton > button {
-    width: 100%;
-    margin: 5px 0;
-    padding: 10px 15px;
-    background-color: transparent;
-    color: #FFD700;
-    border: 2px solid #FFD700;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    box-shadow: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
+    width: 100% !important;
+    margin: 5px 0 !important;
+    padding: 10px 15px !important;
+    background-color: transparent !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    transition: width 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Collapsed state styles */
 section[data-testid="stSidebar"][aria-expanded="false"] {
-    width: auto !important;
-}
-
-section[data-testid="stSidebar"][aria-expanded="false"] .stButton {
-    width: auto !important;
-    padding: 0.5rem;
+    padding: 0.5rem !important;
 }
 
 section[data-testid="stSidebar"][aria-expanded="false"] .stButton > button {
-    width: auto !important;
-    padding: 10px;
-    min-width: 0;
+    width: 44px !important;
+    min-width: 44px !important;
+    padding: 10px !important;
 }
 
 /* Expanded state styles */
 section[data-testid="stSidebar"][aria-expanded="true"] {
-    width: auto;
+    padding: 1rem !important;
 }
 
 section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
-    width: 100%;
+    width: 100% !important;
 }
 
 /* Hover and active states */
 section[data-testid="stSidebar"] .stButton > button:hover {
-    background-color: rgba(255, 215, 0, 0.2);
-    transform: translateY(-2px);
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    transform: translateY(-2px) !important;
 }
 
 section[data-testid="stSidebar"] .stButton > button:active {
-    transform: translateY(0);
-    background-color: rgba(255, 215, 0, 0.3);
+    background-color: rgba(255, 215, 0, 0.3) !important;
+    transform: translateY(0) !important;
 }
 
 /* Ensure button container is full width */
 section[data-testid="stSidebar"] .element-container {
     width: 100% !important;
+    transition: all 0.3s ease;
 }
 
 section[data-testid="stSidebar"] .block-container {
@@ -542,31 +534,28 @@ section[data-testid="stSidebar"] .stButton > button {
     border-radius: 8px !important;
     font-size: 16px !important;
     font-weight: bold !important;
-    transition: all 0.3s ease !important;
-    box-shadow: none !important;
-    white-space: nowrap !important;
-    height: auto !important;
-    line-height: normal !important;
-    display: block !important;
-    overflow: visible !important;
+    transition: width 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Specific styles for collapsed state */
 section[data-testid="stSidebar"][aria-expanded="false"] {
-    padding: 0 !important;
-}
-
-section[data-testid="stSidebar"][aria-expanded="false"] .stButton {
-    padding: 0 !important;
+    padding: 0.5rem !important;
 }
 
 section[data-testid="stSidebar"][aria-expanded="false"] .stButton > button {
-    width: 40px !important;
-    min-width: 40px !important;
+    width: 44px !important;
+    min-width: 44px !important;
     padding: 10px !important;
 }
 
 /* Specific styles for expanded state */
+section[data-testid="stSidebar"][aria-expanded="true"] {
+    padding: 1rem !important;
+}
+
 section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     width: 100% !important;
 }
@@ -589,20 +578,22 @@ section[data-testid="stSidebar"] .element-container {
 
 .b2-input-column {
     flex: 1;
-    text-align: center;
+    border: 2px solid #FFD700;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: rgba(139, 0, 0, 0.7);
 }
 
 .b2-input-column h5 {
     color: #FFD700 !important;
-    margin-bottom: 0.5rem !important;
+    margin-bottom: 1rem !important;
     font-size: 1rem !important;
+    text-align: center !important;
 }
 
 .b2-input-field {
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid #FFD700;
-    border-radius: 8px;
+    background-color: transparent;
     padding: 0.5rem;
 }
 
@@ -623,5 +614,7 @@ section[data-testid="stSidebar"] .element-container {
 
 [data-testid="stNumberInput"] input {
     text-align: center !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 4px;
 }
 
