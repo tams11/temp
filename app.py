@@ -55,8 +55,6 @@ def main():
                 st.session_state.page = "home"
             if st.button("Camera (AD Intensity)", key="camera_button", use_container_width=True):
                 st.session_state.page = "camera"
-            if st.button("Manual SCORAD Input", key="manual_input_button", use_container_width=True):
-                st.session_state.page = "manual_input"
 
     # Render selected page
     if st.session_state.page == "home":
@@ -147,6 +145,8 @@ def camera_page():
             
         if class_label != "Normal":
             st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
+            if st.button("Proceed to Manual SCORAD Input", type="primary"):
+                st.session_state.page = "manual_input"
 
     if uploaded_file or camera_file:
         st.session_state["uploaded_image"] = None
@@ -310,6 +310,17 @@ def manual_input_page():
                     color = "#FF6B6B"
                     
                 st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
+                
+                # Add enhanced SCORAD interpretation rubric
+                st.markdown("""
+                ### SCORAD Index Interpretation
+                
+                | SCORAD Score | Severity Level | Description |
+                |--------------|----------------|-------------|
+                | < 25 | Mild | • Limited areas affected (typically 1-10% body surface)<br>• Mild redness and dryness<br>• Minimal swelling and thickening<br>• Occasional itching with minimal sleep disturbance<br>• Limited impact on daily activities |
+                | 25-50 | Moderate | • Multiple affected areas (typically 11-50% body surface)<br>• Noticeable redness and dryness<br>• Moderate swelling and skin thickening<br>• Frequent itching causing some sleep disruption<br>• Moderate impact on quality of life |
+                | > 50 | Severe | • Widespread involvement (>50% body surface)<br>• Intense redness, significant dryness<br>• Severe swelling and skin thickening<br>• Persistent itching with major sleep disturbance<br>• Significant impact on daily activities and quality of life |
+                """)
 
     # Rubrics column
     with rubrics:
