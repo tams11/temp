@@ -517,8 +517,10 @@ td, th {
     width: 100% !important;
 }
 
-/* Calculate SCORAD button styling */
-.stButton > button:not([kind="secondary"]) {
+/* Calculate SCORAD button styling - more specific selector */
+button[kind="primary"], 
+.stButton > button,
+[data-testid="stForm"] button[type="submit"] {
     background-color: rgba(255, 215, 0, 0.2) !important;
     color: #FFD700 !important;
     border: 2px solid #FFD700 !important;
@@ -531,24 +533,32 @@ td, th {
 }
 
 /* Button hover state */
-.stButton > button:not([kind="secondary"]):hover {
+button[kind="primary"]:hover,
+.stButton > button:hover,
+[data-testid="stForm"] button[type="submit"]:hover {
     background-color: rgba(255, 215, 0, 0.3) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Hide "Press Enter to submit" text */
-.stTextArea div[data-baseweb="textarea"] + div {
+/* Hide all form helper text including focus state */
+.stTextArea div[data-baseweb="textarea"] + div,
+.stTextArea:focus-within div[data-baseweb="textarea"] + div,
+[data-testid="stForm"] small {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
 
-/* Style all form helper text */
-.stTextArea div[data-baseweb="textarea"] ~ div,
-[data-testid="stText"],
-small {
+/* Override any text color inheritance */
+button[kind="primary"] span,
+.stButton > button span,
+[data-testid="stForm"] button[type="submit"] span {
     color: #FFD700 !important;
-    opacity: 0.8 !important;
-    font-size: 0.9rem !important;
+    font-weight: bold !important;
 }
 
 /* Text area styling */
