@@ -225,20 +225,21 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     border: 2px solid #FFD700 !important;
     border-radius: 8px !important;
     margin-bottom: 1rem !important;
+    width: 100% !important;
 }
 
 /* Expander Header */
 .streamlit-expanderHeader {
     color: #FFD700 !important;
     font-weight: bold !important;
-    font-size: 1.1rem !important;
-    padding: 1rem !important;
+    font-size: 1rem !important;
+    padding: 0.75rem !important;
     background-color: rgba(255, 215, 0, 0.1) !important;
 }
 
 /* Expander Content */
 .streamlit-expanderContent {
-    padding: 1rem !important;
+    padding: 0.75rem !important;
     background-color: transparent !important;
 }
 
@@ -246,7 +247,8 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 table {
     width: 100% !important;
     border-collapse: collapse !important;
-    margin: 1rem 0 !important;
+    margin: 0.5rem 0 !important;
+    font-size: 0.9rem !important;
     background-color: rgba(139, 0, 0, 0.5) !important;
 }
 
@@ -254,20 +256,37 @@ th {
     background-color: rgba(255, 215, 0, 0.1) !important;
     color: #FFD700 !important;
     font-weight: bold !important;
-    padding: 0.75rem !important;
+    padding: 0.5rem !important;
     text-align: left !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    font-size: 0.9rem !important;
 }
 
 td {
     color: white !important;
-    padding: 0.75rem !important;
+    padding: 0.5rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
 }
 
-/* Table row hover effect */
-tr:hover td {
-    background-color: rgba(255, 215, 0, 0.05) !important;
+/* Adjust the rubrics column width */
+[data-testid="column"][data-column-width="0.4"] {
+    width: 350px !important;
+    min-width: 350px !important;
+    max-width: 350px !important;
+}
+
+/* Make the guidelines column wider */
+table th:last-child, 
+table td:last-child {
+    width: 40% !important;
+}
+
+/* Adjust text wrapping */
+td, th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }
 
 /* List styling in rubrics */
