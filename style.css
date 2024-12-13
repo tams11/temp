@@ -190,7 +190,7 @@ textarea, input[type="text"], input[type="number"], input[type="email"], input[t
 
 /* Homepage Gradient Background */
 body {
-    background: linear-gradient(135deg, #64D8FC, #FFAFBD);
+    background: linear-gradient(135deg, gold, maroon);
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
