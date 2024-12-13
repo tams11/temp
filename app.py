@@ -178,7 +178,7 @@ def manual_input_page():
             # Part A - Area
             st.subheader("Part A - Area of Extent Score")
             A_input = st.number_input(
-                "Input score for Part A (Extent) of SCORAD test (0-100):",
+                "Input score for Part A (Extent) of SCORAD test (0-100):", style={"color": "white"},
                 min_value=0,
                 max_value=100,
                 value=int(st.session_state.A)
@@ -188,14 +188,14 @@ def manual_input_page():
             if not st.session_state.get('image_processed', False):
                 st.subheader("Part B1 - Intensity Score")
                 B1_input = st.number_input(
-                    "Input score for Part B1 of SCORAD test (0-9):",
+                    "Input score for Part B1 of SCORAD test (0-9):", style={"color": "white"}   ,
                     min_value=0,
                     max_value=9,
                     value=int(st.session_state.B1)
                 )
             else:
                 st.subheader("Part B1 - Intensity Score")
-                st.info(f"B1 score from image analysis: {st.session_state.B1}")
+                st.info(f"B1 score from image analysis: {st.session_state.B1}", style={"color": "white"},)
                 B1_input = st.session_state.B1
 
             # Part B2 - Individual Intensity Criteria
@@ -261,7 +261,7 @@ def manual_input_page():
             # Part C - Subjective symptoms
             st.subheader("Part C - Subjective Symptoms")
             C_input = st.number_input(
-                "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):",
+                "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):", style={"color": "white"},
                 min_value=0,
                 max_value=20,
                 value=int(st.session_state.C)
@@ -318,7 +318,7 @@ def manual_input_page():
     with rubrics:
         st.markdown("### Scoring Guidelines")
         
-        with st.expander("Area of Extent (Part A)", expanded=True):
+        with st.expander("<td>Area of Extent (Part A)</td>", expanded=True):
             st.markdown("""
             | Percentage | Description | Guidelines |
             |------------|-------------|------------|
@@ -332,7 +332,7 @@ def manual_input_page():
 
         with st.expander("Intensity Criteria (B1 & B2)", expanded=True):
             st.markdown("""
-            Score each from 0-3:
+            
             - 0: None
             - 1: Mild
             - 2: Moderate
@@ -352,7 +352,7 @@ def manual_input_page():
 
         with st.expander("Subjective Symptoms (Part C)", expanded=True):
             st.markdown("""
-            Patients should evaluate both itchiness and sleep disturbance together, as these factors often influence each other. The score reflects the overall impact of atopic dermatitis on comfort and rest.
+            <td>Patients should evaluate both itchiness and sleep disturbance together, as these factors often influence each other. The score reflects the overall impact of atopic dermatitis on comfort and rest.</td>
 
             | Score | Description | Guidelines |
             |-------|-------------|------------|
