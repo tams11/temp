@@ -517,8 +517,8 @@ td, th {
     width: 100% !important;
 }
 
-/* Calculate Button Styling */
-.stButton > button {
+/* Calculate Button Styling - More specific selector */
+form.stButton > button[kind="primary"] {
     background-color: rgba(255, 215, 0, 0.2) !important;
     color: #FFD700 !important;
     border: 2px solid #FFD700 !important;
@@ -530,17 +530,30 @@ td, th {
     transition: all 0.3s ease !important;
 }
 
-/* Button hover state */
-.stButton > button:hover {
-    background-color: rgba(255, 215, 0, 0.3) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+/* Form text and helper text styling */
+.stTextArea label,
+.stTextArea span,
+small[data-testid="stText"] {
+    color: #FFD700 !important;
+    opacity: 0.8 !important;
+    font-size: 0.9rem !important;
 }
 
-/* Button active state */
-.stButton > button:active {
-    transform: translateY(0) !important;
-    box-shadow: none !important;
+/* Text area styling */
+.stTextArea textarea {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem !important;
+    font-size: 1.1rem !important;
+    width: 100% !important;
+}
+
+/* Form help text */
+[data-testid="stText"] {
+    color: #FFD700 !important;
+    opacity: 0.8 !important;
 }
 
 /* Placeholder text color */
