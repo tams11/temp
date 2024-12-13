@@ -352,7 +352,7 @@ def manual_input_page():
 
         with st.expander("Subjective Symptoms (Part C)", expanded=True):
             st.markdown("""
-            <td>Patients should evaluate both itchiness and sleep disturbance together, as these factors often influence each other. The score reflects the overall impact of atopic dermatitis on comfort and rest.</td>
+            Patients should evaluate both itchiness and sleep disturbance together, as these factors often influence each other. The score reflects the overall impact of atopic dermatitis on comfort and rest.
 
             | Score | Description | Guidelines |
             |-------|-------------|------------|
