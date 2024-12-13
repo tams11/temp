@@ -572,49 +572,62 @@ section[data-testid="stSidebar"] .element-container {
 /* B2 Input Styling */
 .b2-input-container {
     display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
+    gap: 2rem;
+    margin: 1.5rem 0;
 }
 
 .b2-input-column {
     flex: 1;
-    border: 2px solid #FFD700;
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: rgba(139, 0, 0, 0.7);
+    text-align: center;
 }
 
 .b2-input-column h5 {
     color: #FFD700 !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.75rem !important;
     font-size: 1rem !important;
     text-align: center !important;
+    font-weight: bold !important;
 }
 
 .b2-input-field {
     width: 100%;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #FFD700;
+    border-radius: 8px;
     padding: 0.5rem;
 }
 
-.b2-input-field input {
-    width: 100%;
-    height: 40px;
-    background-color: transparent;
-    color: white;
-    text-align: center;
-    font-size: 1.1rem;
-    border: none;
+/* Number Input Styling */
+[data-testid="stNumberInput"] {
+    width: 100% !important;
 }
 
-/* Override Streamlit's default styles */
 [data-testid="stNumberInput"] > div {
     width: 100% !important;
 }
 
 [data-testid="stNumberInput"] input {
-    text-align: center !important;
+    width: 100% !important;
+    height: 45px !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 4px;
+    color: white !important;
+    text-align: center !important;
+    font-size: 1.2rem !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.5rem !important;
+}
+
+/* Increase/Decrease Button Styling */
+[data-testid="stNumberInput"] button {
+    color: #FFD700 !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 1.2rem !important;
+}
+
+[data-testid="stNumberInput"] button:hover {
+    color: white !important;
+    background-color: rgba(255, 215, 0, 0.2) !important;
 }
 
