@@ -768,3 +768,30 @@ button[type="submit"] p {
     background-color: #FF6B6B;
 }
 
+/* Aggressive hiding of "Press Enter" text */
+[data-testid="stForm"] div:has(button[type="submit"]) div:last-child,
+[data-testid="stForm"] div:has(button[type="submit"]) small,
+[data-testid="stForm"] div:has(button[type="submit"]) p:not(:first-child),
+.element-container div.stMarkdown + div small,
+div[data-baseweb="base-input"] + div,
+[data-testid="stForm"] div[class*="st-emotion"] small,
+[data-testid="stForm"] div[class*="css"] small {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    clip: rect(0 0 0 0) !important;
+    overflow: hidden !important;
+}
+
+/* Additional form styling to prevent the space where the text would be */
+[data-testid="stForm"] div:has(button[type="submit"]) {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
