@@ -264,16 +264,7 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
-            # Add SCORAD interpretation before the submit button
-            st.markdown("### SCORAD Index Interpretation")
-            st.markdown("""
-            | SCORAD Score | Severity Level | Description |
-            |--------------|----------------|-------------|
-            | < 25 | Mild | • Limited areas affected (typically 1-10% body surface)  • Mild redness and dryness  • Minimal swelling and thickening  • Occasional itching with minimal sleep disturbance  • Limited impact on daily activities |
-            | 25-50 | Moderate | • Multiple affected areas (typically 11-50% body surface)  • Noticeable redness and dryness  • Moderate swelling and skin thickening  • Frequent itching causing some sleep disruption  • Moderate impact on quality of life |
-            | > 50 | Severe | • Widespread involvement (>50% body surface)  • Intense redness, significant dryness  • Severe swelling and skin thickening  • Persistent itching with major sleep disturbance  • Significant impact on daily activities and quality of life |
-            """)
-
+            # Remove SCORAD interpretation from here
             submitted = st.form_submit_button("Calculate Total SCORAD", use_container_width=True)
 
             if submitted:
@@ -321,16 +312,7 @@ def manual_input_page():
                     
                 st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
                 
-                # Add enhanced SCORAD interpretation rubric
-                st.markdown("""
-                ### SCORAD Index Interpretation
-                
-                | SCORAD Score | Severity Level | Description |
-                |--------------|----------------|-------------|
-                | < 25 | Mild | • Limited areas affected (typically 1-10% body surface)<br>• Mild redness and dryness<br>• Minimal swelling and thickening<br>• Occasional itching with minimal sleep disturbance<br>• Limited impact on daily activities |
-                | 25-50 | Moderate | • Multiple affected areas (typically 11-50% body surface)<br>• Noticeable redness and dryness<br>• Moderate swelling and skin thickening<br>• Frequent itching causing some sleep disruption<br>• Moderate impact on quality of life |
-                | > 50 | Severe | • Widespread involvement (>50% body surface)<br>• Intense redness, significant dryness<br>• Severe swelling and skin thickening<br>• Persistent itching with major sleep disturbance<br>• Significant impact on daily activities and quality of life |
-                """)
+                # Remove the duplicate SCORAD interpretation from here as well
 
     # Rubrics column
     with rubrics:
@@ -379,6 +361,16 @@ def manual_input_page():
             | 6-10 | Moderate impact | Frequent itching causing noticeable discomfort. Sleep is occasionally disrupted, with some difficulty returning to sleep. |
             | 11-15 | Severe impact | Persistent and intense itching that significantly disrupts daily comfort. Sleep is frequently disturbed, leading to fatigue or reduced daytime productivity. |
             | 16-20 | Very severe impact | Constant, unbearable itching causing extreme discomfort. Sleep is severely impaired or nearly impossible, leading to exhaustion and a serious impact on life. |
+            """)
+
+        # SCORAD Index Interpretation moved to the bottom
+        with st.expander("SCORAD Index Interpretation", expanded=True):
+            st.markdown("""
+            | SCORAD Score | Severity Level | Description |
+            |--------------|----------------|-------------|
+            | < 25 | Mild | • Limited areas affected (typically 1-10% body surface) • Mild redness and dryness • Minimal swelling and thickening • Occasional itching with minimal sleep disturbance • Limited impact on daily activities |
+            | 25-50 | Moderate | • Multiple affected areas (typically 11-50% body surface) • Noticeable redness and dryness • Moderate swelling and skin thickening • Frequent itching causing some sleep disruption • Moderate impact on quality of life |
+            | > 50 | Severe | • Widespread involvement (>50% body surface) • Intense redness, significant dryness • Severe swelling and skin thickening • Persistent itching with major sleep disturbance • Significant impact on daily activities and quality of life |
             """)
 
 if __name__ == "__main__":
