@@ -641,3 +641,29 @@ textarea {
     height: 0 !important;
 }
 
+/* Override all paragraph styles to match td styles */
+p {
+    color: #FFD700 !important;
+    font-family: "Arial", sans-serif !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    padding: 0.75rem !important;
+    vertical-align: top !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* Specific override for form submit button text */
+[data-testid="stForm"] button[type="submit"] p,
+button[type="submit"] p {
+    color: #FFD700 !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    padding: 0 !important;
+}
+
+/* Make sure content section paragraphs stay white */
+.content-section p {
+    color: white !important;
+}
+
