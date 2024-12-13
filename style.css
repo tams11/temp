@@ -221,14 +221,14 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 
 /* Main content and rubrics layout */
 [data-testid="column"][data-column-width="0.6"] {
-    width: 45% !important;
-    min-width: 45% !important;
+    width: 40% !important;
+    min-width: 40% !important;
     padding-right: 1rem !important;
 }
 
 [data-testid="column"][data-column-width="0.4"] {
-    width: 55% !important;
-    min-width: 55% !important;
+    width: 60% !important;
+    min-width: 60% !important;
     padding-right: 0 !important;
 }
 
@@ -278,7 +278,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 table {
     width: 100% !important;
     border-collapse: collapse !important;
-    font-size: 0.9rem !important;
+    font-size: 0.95rem !important;
     table-layout: fixed !important;
     margin: 0 !important;
 }
@@ -287,46 +287,47 @@ th {
     background-color: rgba(255, 215, 0, 0.1) !important;
     color: #FFD700 !important;
     font-weight: bold !important;
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     text-align: left !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
 }
 
 td {
     color: white !important;
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
     vertical-align: top !important;
     white-space: normal !important;
     word-wrap: break-word !important;
     overflow: hidden !important;
+    line-height: 1.4 !important;
 }
 
 /* Adjust column widths for better space usage */
 [aria-label="Area of Extent (Part A)"] td:first-child,
 [aria-label="Area of Extent (Part A)"] th:first-child {
-    width: 12% !important;
+    width: 15% !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:nth-child(2),
 [aria-label="Area of Extent (Part A)"] th:nth-child(2) {
-    width: 23% !important;
+    width: 25% !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:last-child,
 [aria-label="Area of Extent (Part A)"] th:last-child {
-    width: 65% !important;
+    width: 60% !important;
 }
 
 /* Part C column adjustments */
 [aria-label="Subjective Symptoms (Part C)"] td:first-child,
 [aria-label="Subjective Symptoms (Part C)"] th:first-child {
-    width: 70px !important;
+    width: 80px !important;
 }
 
 [aria-label="Subjective Symptoms (Part C)"] td:nth-child(2),
 [aria-label="Subjective Symptoms (Part C)"] th:nth-child(2) {
-    width: 100px !important;
+    width: 120px !important;
 }
 
 /* Text wrapping */
