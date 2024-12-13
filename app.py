@@ -1,7 +1,6 @@
 import tensorflow as tf
-import tensorflow_hub as hub
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 import streamlit as st
 
 def load_css(file_name):
@@ -11,55 +10,8 @@ def load_css(file_name):
 # Apply the custom CSS file
 load_css("style.css")
 
-class HubLayer(tf.keras.layers.Layer):
-    def __init__(self, handle, trainable=False, **kwargs):
-        super(HubLayer, self).__init__(trainable=trainable, **kwargs)
-        self.handle = handle
-
-    def build(self, input_shape):
-        self.hub_layer = hub.KerasLayer(self.handle, trainable=self.trainable)
-        self.hub_layer.build(input_shape)
-        for w in self.hub_layer.trainable_weights:
-            self.add_weight(
-                name=w.name.replace('/', '_'),  # Replace '/' with '_'
-                shape=w.shape,
-                dtype=w.dtype,
-                trainable=True
-            )
-        for w in self.hub_layer.non_trainable_weights:
-            self.add_weight(
-                name=w.name.replace('/', '_'),  # Replace '/' with '_'
-                shape=w.shape,
-                dtype=w.dtype,
-                trainable=False
-            )
-        super(HubLayer, self).build(input_shape)
-
-    def call(self, inputs, **kwargs):
-        return self.hub_layer(inputs, **kwargs)
-    
-    def get_config(self):
-        config = super(HubLayer, self).get_config()
-        config.update({"handle": self.handle})
-        return config
-
-class CustomLayer(tf.keras.layers.Layer):
-    def __init__(self, k, name=None, **kwargs):
-        super(CustomLayer, self).__init__(name=name)
-        self.k = k
-        super(CustomLayer, self).__init__(**kwargs)
-
-    def get_config(self):
-        config = super(CustomLayer, self).get_config()
-        config.update({"k": self.k})
-        return config
-
-    def call(self, input):
-        return tf.multiply(input, 2)
-
-tf.keras.utils.get_custom_objects().update({'HubLayer': HubLayer})
-
-model = tf.keras.models.load_model('model_skin.h5', custom_objects={'HubLayer': HubLayer, 'CustomLayer': CustomLayer})
+# Update model loading
+model = tf.keras.models.load_model('keras_model.h5')
 
 # Streamlit app interface
 import streamlit as st
@@ -120,8 +72,8 @@ def camera_page():
         <h2>📸 Upload a skin image or take a picture with your camera</h2>
     </div>
     """, unsafe_allow_html=True)
-    class_labels = ["Mild", "Moderate", "Severe"]
-    severity_scores = {"Mild": 3, "Moderate": 6, "Severe": 9}
+    class_labels = ["Mild", "Moderate", "Severe", "Normal"]
+    severity_scores = {"Mild": 3, "Moderate": 6, "Severe": 9, "Normal": 0}
 
     # Initialize B1 variable
     if 'B1' not in st.session_state:
@@ -144,28 +96,36 @@ def camera_page():
     if image_source is not None:
         st.write("Classifying...")
         def preprocess(image):
-            image = image.resize((224, 224))
-            image = np.array(image) / 255.0
-            image = np.expand_dims(image, axis=0)
-            return image
+            # Teachable Machine preprocessing
+            size = (224, 224)
+            image = ImageOps.fit(image, size, Image.Resampling.LANCZOS)
+            image_array = np.asarray(image)
+            normalized_image_array = (image_array.astype(np.float32) / 127.5) - 1
+            data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+            data[0] = normalized_image_array
+            return data
+
         processed_image = preprocess(image_source)
         prediction = model.predict(processed_image)
-        predicted_class = np.argmax(prediction, axis=1)[0]
+        predicted_class = np.argmax(prediction[0])
         class_label = class_labels[predicted_class]
-        severity_score = severity_scores[class_label]
+        confidence_score = prediction[0][predicted_class]
         
         # Score ng B1
-        st.session_state.B1 = severity_score
+        st.session_state.B1 = severity_scores[class_label]
         st.session_state.image_processed = True
         
-        if class_label == "Mild":
-            st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
+        if class_label == "Normal":
+            st.markdown(f'<div style="background-color: #FFFFFF; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+        elif class_label == "Mild":
+            st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
         elif class_label == "Moderate":
-            st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Intensity Level: {class_label}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+        elif class_label == "Severe":
+            st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
             
-        st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
+        if class_label != "Normal":
+            st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
 
     if uploaded_file or camera_file:
         st.session_state["uploaded_image"] = None

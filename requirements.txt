@@ -2,4 +2,3 @@ streamlit==1.40.1
 tensorflow==2.18.0
 numpy==2.0.2
 Pillow==10.4.0
-tensorflow_hub==0.16.1  # Only if you are using TensorFlow Hub layers
