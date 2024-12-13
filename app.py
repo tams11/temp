@@ -78,9 +78,11 @@ def home_page():
     st.markdown("""
     <div class="content-section">
         <h2>Data Privacy Act</h2>
-        <p>Tinanggal ko yung ano ah</p>
-        <p>"Get Started" na button</p>
-        <p></p>
+        <p>In compliance with the Data Privacy Act of 2012 (Republic Act No. 10173), all data collected in this study will be used solely for the purposes outlined in the research objectives. The researchers guarantee that no collected data will be reused for any other study or dataset beyond the scope of this project.  
+
+Upon completion of the research, all data will be securely disposed of in accordance with Section 11(e) of the Act, which states that personal information must be retained only for as long as necessary for the fulfillment of the purposes for which it was obtained. This ensures the data subjects' rights to privacy and confidentiality are upheld.  
+
+All collected data will be permanently deleted and rendered unrecoverable to prevent unauthorized access, in line with the proper disposal practices mandated by the law.</p>
     </div>
     """, unsafe_allow_html=True)
         
@@ -199,55 +201,64 @@ def manual_input_page():
             # Part B2 - Individual Intensity Criteria
             st.subheader("Part B2 - Additional Intensity Criteria")
             
-            # Create columns for B2 criteria
-            col1, col2, col3 = st.columns(3)
+            st.markdown("""
+                <div class="b2-input-container">
+                    <div class="b2-input-column">
+                        <h5>Swelling (0-3)</h5>
+                        <div class="b2-input-field">
+            """, unsafe_allow_html=True)
             
-            # Style for consistent height input containers
-            input_style = """
-                <style>
-                    [data-testid="stNumberInput"] {
-                        height: 100%;
-                    }
-                    .stNumberInput > div > div > input {
-                        height: 40px;
-                    }
-                </style>
-            """
-            st.markdown(input_style, unsafe_allow_html=True)
+            B2_swelling = st.number_input(
+                "Swelling",
+                min_value=0,
+                max_value=3,
+                value=int(st.session_state.B2_swelling),
+                help="Rate the severity of swelling from 0 (none) to 3 (severe)",
+                label_visibility="collapsed",
+                key="swelling"
+            )
             
-            # B2 inputs in columns
-            with col1:
-                st.markdown("##### Swelling (0-3)")
-                B2_swelling = st.number_input(
-                    "Swelling",
-                    min_value=0,
-                    max_value=3,
-                    value=int(st.session_state.B2_swelling),
-                    help="Rate the severity of swelling from 0 (none) to 3 (severe)",
-                    label_visibility="collapsed"
-                )
+            st.markdown("""
+                        </div>
+                    </div>
+                    <div class="b2-input-column">
+                        <h5>Thickening (0-3)</h5>
+                        <div class="b2-input-field">
+            """, unsafe_allow_html=True)
             
-            with col2:
-                st.markdown("##### Thickening (0-3)")
-                B2_thickening = st.number_input(
-                    "Thickening",
-                    min_value=0,
-                    max_value=3,
-                    value=int(st.session_state.B2_thickening),
-                    help="Rate the severity of skin thickening from 0 (none) to 3 (severe)",
-                    label_visibility="collapsed"
-                )
+            B2_thickening = st.number_input(
+                "Thickening",
+                min_value=0,
+                max_value=3,
+                value=int(st.session_state.B2_thickening),
+                help="Rate the severity of skin thickening from 0 (none) to 3 (severe)",
+                label_visibility="collapsed",
+                key="thickening"
+            )
             
-            with col3:
-                st.markdown("##### Dryness (0-3)")
-                B2_dryness = st.number_input(
-                    "Dryness",
-                    min_value=0,
-                    max_value=3,
-                    value=int(st.session_state.B2_dryness),
-                    help="Rate the severity of skin dryness from 0 (none) to 3 (severe)",
-                    label_visibility="collapsed"
-                )
+            st.markdown("""
+                        </div>
+                    </div>
+                    <div class="b2-input-column">
+                        <h5>Dryness (0-3)</h5>
+                        <div class="b2-input-field">
+            """, unsafe_allow_html=True)
+            
+            B2_dryness = st.number_input(
+                "Dryness",
+                min_value=0,
+                max_value=3,
+                value=int(st.session_state.B2_dryness),
+                help="Rate the severity of skin dryness from 0 (none) to 3 (severe)",
+                label_visibility="collapsed",
+                key="dryness"
+            )
+            
+            st.markdown("""
+                        </div>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
             # Calculate total B2 score
             B2_total = B2_swelling + B2_thickening + B2_dryness
