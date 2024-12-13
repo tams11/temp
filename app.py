@@ -181,7 +181,8 @@ def manual_input_page():
                 "Input score for Part A (Extent) of SCORAD test (0-100):",
                 min_value=0,
                 max_value=100,
-                value=int(st.session_state.A)
+                value=int(st.session_state.A),
+                label_visibility="collapsed"
             )
 
             # Part B1 - Only show if no image was processed
@@ -191,12 +192,14 @@ def manual_input_page():
                     "Input score for Part B1 of SCORAD test (0-9):",
                     min_value=0,
                     max_value=9,
-                    value=int(st.session_state.B1)
+                    value=int(st.session_state.B1),
+                    label_visibility="collapsed"
                 )
             else:
                 st.subheader("Part B1 - Intensity Score")
                 st.info(f"B1 score from image analysis: {st.session_state.B1}")
                 B1_input = st.session_state.B1
+                
 
             # Part B2 - Individual Intensity Criteria
             st.subheader("Part B2 - Additional Intensity Criteria")
@@ -264,10 +267,26 @@ def manual_input_page():
                 "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):",
                 min_value=0,
                 max_value=20,
-                value=int(st.session_state.C)
+                value=int(st.session_state.C),
+                label_visibility="collapsed"
             )
 
-            submitted = st.form_submit_button("Calculate Total SCORAD")
+            submitted = st.form_submit_button(
+                "Calculate Total SCORAD",
+                use_container_width=True,
+                help="Click to calculate your total SCORAD score"
+            )
+            st.markdown(
+                """
+                <style>
+                [data-testid="stForm"] button[type="submit"] {
+                    color: #FFD700 !important;
+                    font-family: Arial, sans-serif !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
 
             if submitted:
                 # Update session state values
