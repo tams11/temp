@@ -1,5 +1,6 @@
 # Original version with model_skin.h5
 streamlit==1.40.1
-tensorflow==2.15.0
+tensorflow==2.18.0
+tensorflow-hub==0.15.0
 numpy>=1.22.0,<1.24.0
 Pillow>=10.1.0
