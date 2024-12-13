@@ -264,6 +264,16 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
+            # Add SCORAD interpretation before the submit button
+            st.markdown("### SCORAD Index Interpretation")
+            st.markdown("""
+            | SCORAD Score | Severity Level | Description |
+            |--------------|----------------|-------------|
+            | < 25 | Mild | • Limited areas affected (typically 1-10% body surface)  • Mild redness and dryness  • Minimal swelling and thickening  • Occasional itching with minimal sleep disturbance  • Limited impact on daily activities |
+            | 25-50 | Moderate | • Multiple affected areas (typically 11-50% body surface)  • Noticeable redness and dryness  • Moderate swelling and skin thickening  • Frequent itching causing some sleep disruption  • Moderate impact on quality of life |
+            | > 50 | Severe | • Widespread involvement (>50% body surface)  • Intense redness, significant dryness  • Severe swelling and skin thickening  • Persistent itching with major sleep disturbance  • Significant impact on daily activities and quality of life |
+            """)
+
             submitted = st.form_submit_button("Calculate Total SCORAD", use_container_width=True)
 
             if submitted:
