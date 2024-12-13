@@ -473,3 +473,36 @@ td, th {
     }
 }
 
+/* Form Submit Button Styling */
+[data-testid="stForm"] button[type="submit"] {
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2rem !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hover state */
+[data-testid="stForm"] button[type="submit"]:hover {
+    background-color: rgba(255, 215, 0, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Active state */
+[data-testid="stForm"] button[type="submit"]:active {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+/* Disabled state */
+[data-testid="stForm"] button[type="submit"]:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+}
+
