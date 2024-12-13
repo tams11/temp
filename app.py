@@ -153,7 +153,7 @@ def camera_page():
         st.session_state["captured_image"] = None
         
 def manual_input_page():
-    # Initialize session state variables if they don't exist
+    # Initialize session state variables
     if 'A' not in st.session_state:
         st.session_state.A = 0
     if 'B1' not in st.session_state:
@@ -169,15 +169,10 @@ def manual_input_page():
 
     main_content, rubrics = st.columns([0.6, 0.4])
 
-    # Main content column
     with main_content:
         st.title("Manual SCORAD Input")
-        
         with st.form("scorad_form"):
-            st.markdown('<div class="main-content-section">', unsafe_allow_html=True)
-            
             # Part A - Area
-            st.markdown('<div class="input-group">', unsafe_allow_html=True)
             st.subheader("Part A - Area of Extent Score")
             A_input = st.number_input(
                 "Input score for Part A (Extent) of SCORAD test (0-100):",
@@ -185,7 +180,6 @@ def manual_input_page():
                 max_value=100,
                 value=int(st.session_state.A)
             )
-            st.markdown('</div>', unsafe_allow_html=True)
             
             # Part B1 - Only show if no image was processed
             if not st.session_state.get('image_processed', False):
@@ -270,7 +264,6 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
-            st.markdown('</div>', unsafe_allow_html=True)
             submitted = st.form_submit_button("Calculate Total SCORAD")
 
             if submitted:
