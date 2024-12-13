@@ -517,8 +517,8 @@ td, th {
     width: 100% !important;
 }
 
-/* Calculate Button Styling - More specific selector */
-form.stButton > button[kind="primary"] {
+/* Calculate SCORAD button styling */
+.stButton > button:not([kind="secondary"]) {
     background-color: rgba(255, 215, 0, 0.2) !important;
     color: #FFD700 !important;
     border: 2px solid #FFD700 !important;
@@ -530,10 +530,22 @@ form.stButton > button[kind="primary"] {
     transition: all 0.3s ease !important;
 }
 
-/* Form text and helper text styling */
-.stTextArea label,
-.stTextArea span,
-small[data-testid="stText"] {
+/* Button hover state */
+.stButton > button:not([kind="secondary"]):hover {
+    background-color: rgba(255, 215, 0, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hide "Press Enter to submit" text */
+.stTextArea div[data-baseweb="textarea"] + div {
+    display: none !important;
+}
+
+/* Style all form helper text */
+.stTextArea div[data-baseweb="textarea"] ~ div,
+[data-testid="stText"],
+small {
     color: #FFD700 !important;
     opacity: 0.8 !important;
     font-size: 0.9rem !important;

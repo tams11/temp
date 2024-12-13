@@ -261,7 +261,7 @@ def manual_input_page():
             # Part C - Subjective symptoms
             st.subheader("Part C - Subjective Symptoms")
             C_input = st.number_input(
-                "Input score for Part C (Pruritus and Sleep Loss) of SCORAD test (0-20):",
+                "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):",
                 min_value=0,
                 max_value=20,
                 value=int(st.session_state.C)
