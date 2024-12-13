@@ -153,6 +153,20 @@ def camera_page():
         st.session_state["captured_image"] = None
         
 def manual_input_page():
+    # Initialize session state variables if they don't exist
+    if 'A' not in st.session_state:
+        st.session_state.A = 0
+    if 'B1' not in st.session_state:
+        st.session_state.B1 = 0
+    if 'B2_swelling' not in st.session_state:
+        st.session_state.B2_swelling = 0
+    if 'B2_thickening' not in st.session_state:
+        st.session_state.B2_thickening = 0
+    if 'B2_dryness' not in st.session_state:
+        st.session_state.B2_dryness = 0
+    if 'C' not in st.session_state:
+        st.session_state.C = 0
+
     main_content, rubrics = st.columns([0.6, 0.4])
 
     # Main content column
