@@ -14,27 +14,103 @@ body {
 }
 
 /* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Arial", sans-serif !important;
+    color: #FFD700 !important;
+    margin-bottom: 1rem !important;
+}
+
 h1 {
-    color: #FFD700;
-    font-size: 2.5em;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    text-transform: uppercase;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-top: 20px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
 }
 
 h2 {
-    color: #FFD700;
-    text-align: center;
-    font-size: 22px;
-    text-transform: uppercase;
+    font-size: 2em !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
 }
 
-p {
+h3 {
+    font-size: 1.5em !important;
+    font-weight: 600 !important;
+    margin-top: 1.5rem !important;
+}
+
+/* Subheaders (like Part A, B1, B2, C) */
+.stMarkdown h3 {
+    color: #FFD700 !important;
+    font-size: 1.3em !important;
+    font-weight: 600 !important;
+    margin: 1.5rem 0 1rem 0 !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Input Labels */
+label {
+    color: #FFD700 !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* B2 Input Labels */
+.b2-input-column h5 {
+    color: #FFD700 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    margin-bottom: 0.75rem !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Regular text */
+p, li, span {
+    font-family: "Arial", sans-serif !important;
     color: white !important;
-    text-align: justify;
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    text-align: justify !important;
+}
+
+/* Form input text */
+input, textarea {
+    font-family: "Arial", sans-serif !important;
+    font-size: 1.1rem !important;
+}
+
+/* Navigation text */
+.css-1d391kg h3 {
+    font-size: 1.5em !important;
+    font-weight: bold !important;
+    letter-spacing: 1px !important;
+}
+
+/* Button text */
+button {
+    font-family: "Arial", sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Metric labels */
+[data-testid="stMetricLabel"] {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #FFD700 !important;
+}
+
+/* Metric values */
+[data-testid="stMetricValue"] {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: white !important;
 }
 
 /* Navigation Panel */
@@ -90,14 +166,6 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 .b2-input-column {
     flex: 1;
     text-align: center;
-}
-
-.b2-input-column h5 {
-    color: #FFD700 !important;
-    margin-bottom: 0.75rem !important;
-    font-size: 1rem !important;
-    text-align: center !important;
-    font-weight: bold !important;
 }
 
 /* Number Input Styling */
