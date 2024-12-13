@@ -358,3 +358,118 @@ td, th {
     padding-right: 1rem !important;
 }
 
+/* Add these responsive styles */
+
+/* Base responsive container */
+.main .block-container {
+    max-width: 1200px !important;
+    padding: 0 1rem !important;
+    margin: 0 auto !important;
+}
+
+/* Large screens (default) */
+@media screen and (min-width: 1200px) {
+    [data-testid="column"][data-column-width="0.6"] {
+        width: 35% !important;
+        min-width: 35% !important;
+    }
+
+    [data-testid="column"][data-column-width="0.4"] {
+        width: 65% !important;
+        min-width: 65% !important;
+    }
+
+    [data-testid="stExpander"] {
+        min-width: 600px !important;
+    }
+
+    table {
+        min-width: 580px !important;
+    }
+}
+
+/* Medium screens */
+@media screen and (max-width: 1199px) {
+    [data-testid="column"][data-column-width="0.6"] {
+        width: 40% !important;
+        min-width: 40% !important;
+    }
+
+    [data-testid="column"][data-column-width="0.4"] {
+        width: 60% !important;
+        min-width: 60% !important;
+    }
+
+    [data-testid="stExpander"] {
+        min-width: 500px !important;
+    }
+
+    table {
+        min-width: 480px !important;
+    }
+}
+
+/* Small screens */
+@media screen and (max-width: 991px) {
+    [data-testid="column"][data-column-width="0.6"],
+    [data-testid="column"][data-column-width="0.4"] {
+        width: 100% !important;
+        min-width: 100% !important;
+        padding: 0 !important;
+    }
+
+    [data-testid="stExpander"] {
+        min-width: 100% !important;
+    }
+
+    table {
+        min-width: 100% !important;
+        font-size: 0.9rem !important;
+    }
+
+    td, th {
+        padding: 0.5rem !important;
+    }
+
+    /* Adjust column widths for smaller screens */
+    [aria-label="Area of Extent (Part A)"] td:first-child,
+    [aria-label="Area of Extent (Part A)"] th:first-child {
+        min-width: 70px !important;
+    }
+
+    [aria-label="Area of Extent (Part A)"] td:nth-child(2),
+    [aria-label="Area of Extent (Part A)"] th:nth-child(2) {
+        min-width: 100px !important;
+    }
+
+    [aria-label="Area of Extent (Part A)"] td:last-child,
+    [aria-label="Area of Extent (Part A)"] th:last-child {
+        min-width: 200px !important;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 767px) {
+    table {
+        font-size: 0.85rem !important;
+    }
+
+    td, th {
+        padding: 0.4rem !important;
+    }
+
+    .streamlit-expanderHeader {
+        font-size: 0.9rem !important;
+        padding: 0.75rem !important;
+    }
+
+    /* Stack columns on mobile */
+    [aria-label="Area of Extent (Part A)"] td,
+    [aria-label="Area of Extent (Part A)"] th,
+    [aria-label="Subjective Symptoms (Part C)"] td,
+    [aria-label="Subjective Symptoms (Part C)"] th {
+        min-width: auto !important;
+        width: auto !important;
+    }
+}
+
