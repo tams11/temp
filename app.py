@@ -199,33 +199,54 @@ def manual_input_page():
             # Part B2 - Individual Intensity Criteria
             st.subheader("Part B2 - Additional Intensity Criteria")
             
+            # Create columns for B2 criteria
             col1, col2, col3 = st.columns(3)
             
+            # Style for consistent height input containers
+            input_style = """
+                <style>
+                    [data-testid="stNumberInput"] {
+                        height: 100%;
+                    }
+                    .stNumberInput > div > div > input {
+                        height: 40px;
+                    }
+                </style>
+            """
+            st.markdown(input_style, unsafe_allow_html=True)
+            
+            # B2 inputs in columns
             with col1:
+                st.markdown("##### Swelling (0-3)")
                 B2_swelling = st.number_input(
-                    "Swelling (0-3):",
+                    "Swelling",
                     min_value=0,
                     max_value=3,
                     value=int(st.session_state.B2_swelling),
-                    help="Rate the severity of swelling from 0 (none) to 3 (severe)"
+                    help="Rate the severity of swelling from 0 (none) to 3 (severe)",
+                    label_visibility="collapsed"
                 )
             
             with col2:
+                st.markdown("##### Thickening (0-3)")
                 B2_thickening = st.number_input(
-                    "Thickening (0-3):",
+                    "Thickening",
                     min_value=0,
                     max_value=3,
                     value=int(st.session_state.B2_thickening),
-                    help="Rate the severity of skin thickening from 0 (none) to 3 (severe)"
+                    help="Rate the severity of skin thickening from 0 (none) to 3 (severe)",
+                    label_visibility="collapsed"
                 )
             
             with col3:
+                st.markdown("##### Dryness (0-3)")
                 B2_dryness = st.number_input(
-                    "Dryness (0-3):",
+                    "Dryness",
                     min_value=0,
                     max_value=3,
                     value=int(st.session_state.B2_dryness),
-                    help="Rate the severity of skin dryness from 0 (none) to 3 (severe)"
+                    help="Rate the severity of skin dryness from 0 (none) to 3 (severe)",
+                    label_visibility="collapsed"
                 )
 
             # Calculate total B2 score
