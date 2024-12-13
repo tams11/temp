@@ -70,10 +70,25 @@ section[data-testid="stSidebar"] > div {
 section[data-testid="stSidebar"][aria-expanded="false"] .stButton > button {
     border: 2px solid #FFD700 !important;
     background-color: transparent !important;
+    width: auto !important;
+    min-width: auto !important;
 }
 
-section[data-testid="stSidebar"][aria-expanded="false"] .stButton > button:hover {
-    background-color: rgba(255, 215, 0, 0.2) !important;
+section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Ensure button container is full width */
+section[data-testid="stSidebar"] .element-container {
+    width: 100% !important;
+}
+
+section[data-testid="stSidebar"] .block-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
 }
 
 p, h1, h2, h3, h4, h5, h6, label, .stTextInput > div > div > input {
