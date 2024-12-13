@@ -135,7 +135,7 @@ def camera_page():
         st.session_state.image_processed = True
         
         if class_label == "Normal":
-            st.markdown(f'<div style="background-color: #FFFFFF; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="background-color: #808080; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
         elif class_label == "Mild":
             st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
         elif class_label == "Moderate":
