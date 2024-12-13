@@ -158,19 +158,20 @@ def manual_input_page():
         st.title("Manual SCORAD Input")
         st.header("Complete SCORAD Assessment")
 
-        # Initialize variables in session state if they don't exist
+        # Initialize variables in session state
         if 'A' not in st.session_state:
             st.session_state.A = 0
         if 'B1' not in st.session_state:
             st.session_state.B1 = 0
-        if 'B2' not in st.session_state:
-            st.session_state.B2 = 0
+        if 'B2_swelling' not in st.session_state:
+            st.session_state.B2_swelling = 0
+        if 'B2_thickening' not in st.session_state:
+            st.session_state.B2_thickening = 0
+        if 'B2_dryness' not in st.session_state:
+            st.session_state.B2_dryness = 0
         if 'C' not in st.session_state:
             st.session_state.C = 0
-        if 'image_processed' not in st.session_state:
-            st.session_state.image_processed = False
         
-        # Create a form for all inputs
         with st.form("scorad_form"):
             # Part A - Area
             st.subheader("Part A - Area of Extent Score")
@@ -182,7 +183,7 @@ def manual_input_page():
             )
 
             # Part B1 - Only show if no image was processed
-            if not st.session_state.image_processed:
+            if not st.session_state.get('image_processed', False):
                 st.subheader("Part B1 - Intensity Score")
                 B1_input = st.number_input(
                     "Input score for Part B1 of SCORAD test (0-9):",
@@ -195,14 +196,40 @@ def manual_input_page():
                 st.info(f"B1 score from image analysis: {st.session_state.B1}")
                 B1_input = st.session_state.B1
 
-            # Part B2 - Intensity
+            # Part B2 - Individual Intensity Criteria
             st.subheader("Part B2 - Additional Intensity Criteria")
-            B2_input = st.number_input(
-                "Input score for Part B2 of SCORAD test (0-9):",
-                min_value=0,
-                max_value=9,
-                value=int(st.session_state.B2)
-            )
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                B2_swelling = st.number_input(
+                    "Swelling (0-3):",
+                    min_value=0,
+                    max_value=3,
+                    value=int(st.session_state.B2_swelling),
+                    help="Rate the severity of swelling from 0 (none) to 3 (severe)"
+                )
+            
+            with col2:
+                B2_thickening = st.number_input(
+                    "Thickening (0-3):",
+                    min_value=0,
+                    max_value=3,
+                    value=int(st.session_state.B2_thickening),
+                    help="Rate the severity of skin thickening from 0 (none) to 3 (severe)"
+                )
+            
+            with col3:
+                B2_dryness = st.number_input(
+                    "Dryness (0-3):",
+                    min_value=0,
+                    max_value=3,
+                    value=int(st.session_state.B2_dryness),
+                    help="Rate the severity of skin dryness from 0 (none) to 3 (severe)"
+                )
+
+            # Calculate total B2 score
+            B2_total = B2_swelling + B2_thickening + B2_dryness
 
             # Part C - Subjective symptoms
             st.subheader("Part C - Subjective Symptoms")
@@ -213,25 +240,38 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
-            # Submit button
             submitted = st.form_submit_button("Calculate Total SCORAD")
 
             if submitted:
                 # Update session state values
                 st.session_state.A = A_input
-                if not st.session_state.image_processed:
+                if not st.session_state.get('image_processed', False):
                     st.session_state.B1 = B1_input
-                st.session_state.B2 = B2_input
+                st.session_state.B2_swelling = B2_swelling
+                st.session_state.B2_thickening = B2_thickening
+                st.session_state.B2_dryness = B2_dryness
                 st.session_state.C = C_input
 
-                # Convert to float for calculation to maintain precision
+                # Convert to float for calculation
                 A = float(st.session_state.A)
                 B1 = float(st.session_state.B1)
-                B2 = float(st.session_state.B2)
+                B2 = float(B2_total)
                 C = float(st.session_state.C)
                 
                 # SCORAD calculation formula: A/5 + 7(B1+B2)/2 + C
                 total_scorad = (A / 5) + (7 * (B1 + B2) / 2) + C
+                
+                # Display individual B2 scores
+                st.write("### B2 Scores Breakdown:")
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Swelling", B2_swelling)
+                with col2:
+                    st.metric("Thickening", B2_thickening)
+                with col3:
+                    st.metric("Dryness", B2_dryness)
+                st.write(f"Total B2 Score: {B2_total}")
+                
                 st.success(f"Total SCORAD Score: {total_scorad:.2f}")
                 
                 # Interpret SCORAD score
