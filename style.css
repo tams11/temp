@@ -224,7 +224,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     background-color: rgba(139, 0, 0, 0.7) !important;
     border: 2px solid #FFD700 !important;
     border-radius: 8px !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 1.5rem !important;
     width: 100% !important;
 }
 
@@ -233,79 +233,79 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     color: #FFD700 !important;
     font-weight: bold !important;
     font-size: 1rem !important;
-    padding: 0.75rem 1rem !important;
+    padding: 1rem !important;
     background-color: rgba(255, 215, 0, 0.1) !important;
 }
 
 /* Expander Content */
 .streamlit-expanderContent {
-    padding: 1rem !important;
+    padding: 1.5rem !important;
     background-color: transparent !important;
+}
+
+/* Description text in expander */
+.streamlit-expanderContent p {
+    margin-bottom: 1.5rem !important;
+    line-height: 1.6 !important;
+    color: white !important;
+    font-size: 0.95rem !important;
 }
 
 /* Table Styling */
 table {
     width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0.75rem 0 !important;
-    font-size: 0.9rem !important;
-    background-color: rgba(139, 0, 0, 0.5) !important;
+    border-collapse: separate !important;
+    border-spacing: 0 2px !important;
+    margin: 1rem 0 !important;
+    font-size: 0.95rem !important;
 }
 
 th {
     background-color: rgba(255, 215, 0, 0.1) !important;
     color: #FFD700 !important;
     font-weight: bold !important;
-    padding: 0.75rem !important;
+    padding: 1rem !important;
     text-align: left !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
-    font-size: 0.9rem !important;
 }
 
 td {
     color: white !important;
-    padding: 0.75rem !important;
+    padding: 1rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
+    vertical-align: top !important;
 }
 
-/* Adjust the rubrics column width */
-[data-testid="column"][data-column-width="0.4"] {
-    width: 350px !important;
-    min-width: 350px !important;
-    max-width: 350px !important;
-}
-
-/* Make the guidelines column wider */
-table th:last-child, 
-table td:last-child {
-    width: 40% !important;
-}
-
-/* Adjust text wrapping */
+/* Remove max-width constraint */
 td, th {
     white-space: normal !important;
     word-wrap: break-word !important;
-    max-width: 200px !important;
 }
 
-/* List styling in rubrics */
+/* Adjust column widths */
+td:first-child, th:first-child {
+    width: 15% !important;
+}
+
+td:nth-child(2), th:nth-child(2) {
+    width: 25% !important;
+}
+
+td:last-child, th:last-child {
+    width: 60% !important;
+}
+
+/* List styling */
 .streamlit-expanderContent ul {
     list-style-type: none !important;
     padding: 0.5rem 1rem !important;
-    margin: 0.5rem 0 !important;
+    margin: 1rem 0 !important;
 }
 
 .streamlit-expanderContent li {
     color: white !important;
     padding: 0.5rem 0 !important;
-    line-height: 1.5 !important;
-}
-
-/* Score ranges in rubrics */
-.streamlit-expanderContent strong {
-    color: #FFD700 !important;
-    font-weight: bold !important;
+    line-height: 1.6 !important;
 }
 
