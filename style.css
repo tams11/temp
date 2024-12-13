@@ -177,7 +177,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     width: 100% !important;
     height: 45px !important;
     background-color: rgba(255, 255, 255, 0.1) !important;
-    color: white !important;
+    color: #FFD700 !important;
     text-align: center !important;
     font-size: 1.2rem !important;
     border: 2px solid #FFD700 !important;
@@ -504,5 +504,47 @@ td, th {
 [data-testid="stForm"] button[type="submit"]:disabled {
     opacity: 0.6 !important;
     cursor: not-allowed !important;
+}
+
+/* Regular Input Styling */
+.stTextInput input {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem !important;
+    font-size: 1.1rem !important;
+    width: 100% !important;
+}
+
+/* Calculate Button Styling */
+.stButton > button {
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    color: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2rem !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Button hover state */
+.stButton > button:hover {
+    background-color: rgba(255, 215, 0, 0.3) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Button active state */
+.stButton > button:active {
+    transform: translateY(0) !important;
+    box-shadow: none !important;
+}
+
+/* Placeholder text color */
+input::placeholder {
+    color: rgba(255, 215, 0, 0.5) !important;
 }
 
