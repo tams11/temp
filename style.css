@@ -233,13 +233,13 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     color: #FFD700 !important;
     font-weight: bold !important;
     font-size: 1rem !important;
-    padding: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
     background-color: rgba(255, 215, 0, 0.1) !important;
 }
 
 /* Expander Content */
 .streamlit-expanderContent {
-    padding: 0.75rem !important;
+    padding: 1rem !important;
     background-color: transparent !important;
 }
 
@@ -247,7 +247,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 table {
     width: 100% !important;
     border-collapse: collapse !important;
-    margin: 0.5rem 0 !important;
+    margin: 0.75rem 0 !important;
     font-size: 0.9rem !important;
     background-color: rgba(139, 0, 0, 0.5) !important;
 }
@@ -256,7 +256,7 @@ th {
     background-color: rgba(255, 215, 0, 0.1) !important;
     color: #FFD700 !important;
     font-weight: bold !important;
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     text-align: left !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
     font-size: 0.9rem !important;
@@ -264,10 +264,10 @@ th {
 
 td {
     color: white !important;
-    padding: 0.5rem !important;
+    padding: 0.75rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
     font-size: 0.9rem !important;
-    line-height: 1.4 !important;
+    line-height: 1.5 !important;
 }
 
 /* Adjust the rubrics column width */
@@ -287,19 +287,20 @@ table td:last-child {
 td, th {
     white-space: normal !important;
     word-wrap: break-word !important;
+    max-width: 200px !important;
 }
 
 /* List styling in rubrics */
 .streamlit-expanderContent ul {
     list-style-type: none !important;
-    padding-left: 0 !important;
-    margin: 1rem 0 !important;
+    padding: 0.5rem 1rem !important;
+    margin: 0.5rem 0 !important;
 }
 
 .streamlit-expanderContent li {
     color: white !important;
     padding: 0.5rem 0 !important;
-    margin-left: 1rem !important;
+    line-height: 1.5 !important;
 }
 
 /* Score ranges in rubrics */
