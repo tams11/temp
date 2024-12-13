@@ -158,24 +158,12 @@ def manual_input_page():
     # Main content column
     with main_content:
         st.title("Manual SCORAD Input")
-        st.header("Complete SCORAD Assessment")
-
-        # Initialize variables in session state
-        if 'A' not in st.session_state:
-            st.session_state.A = 0
-        if 'B1' not in st.session_state:
-            st.session_state.B1 = 0
-        if 'B2_swelling' not in st.session_state:
-            st.session_state.B2_swelling = 0
-        if 'B2_thickening' not in st.session_state:
-            st.session_state.B2_thickening = 0
-        if 'B2_dryness' not in st.session_state:
-            st.session_state.B2_dryness = 0
-        if 'C' not in st.session_state:
-            st.session_state.C = 0
         
         with st.form("scorad_form"):
+            st.markdown('<div class="main-content-section">', unsafe_allow_html=True)
+            
             # Part A - Area
+            st.markdown('<div class="input-group">', unsafe_allow_html=True)
             st.subheader("Part A - Area of Extent Score")
             A_input = st.number_input(
                 "Input score for Part A (Extent) of SCORAD test (0-100):",
@@ -183,7 +171,8 @@ def manual_input_page():
                 max_value=100,
                 value=int(st.session_state.A)
             )
-
+            st.markdown('</div>', unsafe_allow_html=True)
+            
             # Part B1 - Only show if no image was processed
             if not st.session_state.get('image_processed', False):
                 st.subheader("Part B1 - Intensity Score")
@@ -267,6 +256,7 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
+            st.markdown('</div>', unsafe_allow_html=True)
             submitted = st.form_submit_button("Calculate Total SCORAD")
 
             if submitted:
