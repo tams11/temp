@@ -221,13 +221,23 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 
 /* Main content and rubrics layout */
 [data-testid="column"][data-column-width="0.6"] {
-    width: 55% !important;
-    min-width: 55% !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    padding-right: 2rem !important;
 }
 
 [data-testid="column"][data-column-width="0.4"] {
-    width: 45% !important;
-    min-width: 45% !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    padding-right: 2rem !important;
+}
+
+/* Scoring Guidelines Title */
+[data-testid="column"][data-column-width="0.4"] h3 {
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 2px solid #FFD700 !important;
+    width: 100% !important;
 }
 
 /* Rubrics Panel Styling */
@@ -236,7 +246,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     border: 2px solid #FFD700 !important;
     border-radius: 8px !important;
     margin-bottom: 1rem !important;
-    min-width: 400px !important;
+    width: 100% !important;
 }
 
 /* Expander Header */
@@ -253,23 +263,22 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     padding: 0.75rem !important;
     background-color: transparent !important;
     overflow: hidden !important;
+    width: 100% !important;
 }
 
-/* Description text in expander */
-.streamlit-expanderContent p {
-    margin-bottom: 1rem !important;
-    line-height: 1.4 !important;
-    color: white !important;
-    font-size: 0.95rem !important;
+/* Table container */
+.streamlit-expanderContent > div {
+    width: 100% !important;
+    padding-right: 0 !important;
 }
 
-/* Table Styling for better width distribution */
+/* Table Styling */
 table {
     width: 100% !important;
     border-collapse: collapse !important;
     font-size: 0.9rem !important;
     table-layout: fixed !important;
-    min-width: 380px !important;
+    margin: 0 !important;
 }
 
 th {
