@@ -613,3 +613,31 @@ textarea {
     border-radius: 8px !important;
 }
 
+/* Override form submit button text specifically */
+[data-testid="stForm"] button[type="submit"] p,
+[data-testid="stForm"] button[type="submit"] div,
+[data-testid="stForm"] button[type="submit"] span,
+[data-testid="stForm"] button[type="submit"] * {
+    color: #FFD700 !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    font-family: "Arial", sans-serif !important;
+    text-transform: none !important;
+}
+
+/* Additional specificity for the button itself */
+[data-testid="stForm"] button[type="submit"].st-emotion-cache-7ym5gk {
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    border: 2px solid #FFD700 !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 2rem !important;
+}
+
+/* Hide the "Press Enter" text with extreme specificity */
+[data-baseweb="textarea"] ~ div[class*="st-"],
+[data-baseweb="textarea"] + div[class*="st-"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+}
+
