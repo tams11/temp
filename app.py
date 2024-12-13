@@ -178,7 +178,7 @@ def manual_input_page():
             # Part A - Area
             st.subheader("Part A - Area of Extent Score")
             A_input = st.number_input(
-                "Input score for Part A (Extent) of SCORAD test (0-100):", style={"color": "white"},
+                "Input score for Part A (Extent) of SCORAD test (0-100):",
                 min_value=0,
                 max_value=100,
                 value=int(st.session_state.A)
@@ -188,14 +188,14 @@ def manual_input_page():
             if not st.session_state.get('image_processed', False):
                 st.subheader("Part B1 - Intensity Score")
                 B1_input = st.number_input(
-                    "Input score for Part B1 of SCORAD test (0-9):", style={"color": "white"}   ,
+                    "Input score for Part B1 of SCORAD test (0-9):",
                     min_value=0,
                     max_value=9,
                     value=int(st.session_state.B1)
                 )
             else:
                 st.subheader("Part B1 - Intensity Score")
-                st.info(f"B1 score from image analysis: {st.session_state.B1}", style={"color": "white"},)
+                st.info(f"B1 score from image analysis: {st.session_state.B1}")
                 B1_input = st.session_state.B1
 
             # Part B2 - Individual Intensity Criteria
@@ -261,7 +261,7 @@ def manual_input_page():
             # Part C - Subjective symptoms
             st.subheader("Part C - Subjective Symptoms")
             C_input = st.number_input(
-                "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):", style={"color": "white"},
+                "Input score for Part C (Itchiness and Sleep Loss) of SCORAD test (0-20):",
                 min_value=0,
                 max_value=20,
                 value=int(st.session_state.C)
@@ -318,7 +318,7 @@ def manual_input_page():
     with rubrics:
         st.markdown("### Scoring Guidelines")
         
-        with st.expander("<td>Area of Extent (Part A)</td>", expanded=True):
+        with st.expander("Area of Extent (Part A)", expanded=True):
             st.markdown("""
             | Percentage | Description | Guidelines |
             |------------|-------------|------------|
