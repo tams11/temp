@@ -240,6 +240,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 .streamlit-expanderContent {
     padding: 0.75rem !important;
     background-color: transparent !important;
+    overflow: hidden !important;
 }
 
 /* Description text in expander */
@@ -255,6 +256,7 @@ table {
     width: 100% !important;
     border-collapse: collapse !important;
     font-size: 0.9rem !important;
+    table-layout: fixed !important;
 }
 
 th {
@@ -271,20 +273,36 @@ td {
     padding: 0.5rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
     vertical-align: top !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow: hidden !important;
 }
 
-/* Fixed column widths */
-td:first-child, th:first-child {
-    width: 80px !important;  /* For percentage/score column */
+/* Fixed column widths for Part A */
+[aria-label="Area of Extent (Part A)"] td:first-child,
+[aria-label="Area of Extent (Part A)"] th:first-child {
+    width: 15% !important;
 }
 
-td:nth-child(2), th:nth-child(2) {
-    width: 120px !important;  /* For description column */
+[aria-label="Area of Extent (Part A)"] td:nth-child(2),
+[aria-label="Area of Extent (Part A)"] th:nth-child(2) {
+    width: 25% !important;
 }
 
-/* Let the guidelines column take remaining space */
-td:last-child, th:last-child {
-    width: auto !important;
+[aria-label="Area of Extent (Part A)"] td:last-child,
+[aria-label="Area of Extent (Part A)"] th:last-child {
+    width: 60% !important;
+}
+
+/* Fixed column widths for Part C */
+[aria-label="Subjective Symptoms (Part C)"] td:first-child,
+[aria-label="Subjective Symptoms (Part C)"] th:first-child {
+    width: 80px !important;
+}
+
+[aria-label="Subjective Symptoms (Part C)"] td:nth-child(2),
+[aria-label="Subjective Symptoms (Part C)"] th:nth-child(2) {
+    width: 120px !important;
 }
 
 /* Text wrapping */
