@@ -201,11 +201,11 @@ def manual_input_page():
             # Part B2 - Individual Intensity Criteria
             st.subheader("Part B2 - Additional Intensity Criteria")
             
+            # B2 inputs in columns with consistent styling
             st.markdown("""
                 <div class="b2-input-container">
                     <div class="b2-input-column">
                         <h5>Swelling (0-3)</h5>
-                        <div class="b2-input-field">
             """, unsafe_allow_html=True)
             
             B2_swelling = st.number_input(
@@ -219,11 +219,9 @@ def manual_input_page():
             )
             
             st.markdown("""
-                        </div>
                     </div>
                     <div class="b2-input-column">
                         <h5>Thickening (0-3)</h5>
-                        <div class="b2-input-field">
             """, unsafe_allow_html=True)
             
             B2_thickening = st.number_input(
@@ -237,11 +235,9 @@ def manual_input_page():
             )
             
             st.markdown("""
-                        </div>
                     </div>
                     <div class="b2-input-column">
                         <h5>Dryness (0-3)</h5>
-                        <div class="b2-input-field">
             """, unsafe_allow_html=True)
             
             B2_dryness = st.number_input(
@@ -255,7 +251,6 @@ def manual_input_page():
             )
             
             st.markdown("""
-                        </div>
                     </div>
                 </div>
             """, unsafe_allow_html=True)
