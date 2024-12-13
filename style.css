@@ -750,3 +750,21 @@ button[type="submit"] p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
+/* Hide the "Press Enter to submit form" text */
+.stButton button[kind="formSubmit"] {
+    width: 100%;
+}
+
+/* Optional: Improve button styling */
+.stButton button {
+    background-color: #FF4B4B;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+}
+
+.stButton button:hover {
+    background-color: #FF6B6B;
+}
+

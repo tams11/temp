@@ -264,7 +264,7 @@ def manual_input_page():
                 value=int(st.session_state.C)
             )
 
-            submitted = st.form_submit_button("Calculate Total SCORAD")
+            submitted = st.form_submit_button("Calculate Total SCORAD", use_container_width=True)
 
             if submitted:
                 # Update session state values
