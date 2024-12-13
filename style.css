@@ -224,8 +224,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     background-color: rgba(139, 0, 0, 0.7) !important;
     border: 2px solid #FFD700 !important;
     border-radius: 8px !important;
-    margin-bottom: 1.5rem !important;
-    width: 100% !important;
+    margin-bottom: 1rem !important;
 }
 
 /* Expander Header */
@@ -239,14 +238,14 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 
 /* Expander Content */
 .streamlit-expanderContent {
-    padding: 1.5rem !important;
+    padding: 0.75rem !important;
     background-color: transparent !important;
 }
 
 /* Description text in expander */
 .streamlit-expanderContent p {
-    margin-bottom: 1.5rem !important;
-    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.4 !important;
     color: white !important;
     font-size: 0.95rem !important;
 }
@@ -254,46 +253,44 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 /* Table Styling */
 table {
     width: 100% !important;
-    border-collapse: separate !important;
-    border-spacing: 0 2px !important;
-    margin: 1rem 0 !important;
-    font-size: 0.95rem !important;
+    border-collapse: collapse !important;
+    font-size: 0.9rem !important;
 }
 
 th {
     background-color: rgba(255, 215, 0, 0.1) !important;
     color: #FFD700 !important;
     font-weight: bold !important;
-    padding: 1rem !important;
+    padding: 0.5rem !important;
     text-align: left !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
 }
 
 td {
     color: white !important;
-    padding: 1rem !important;
+    padding: 0.5rem !important;
     border: 1px solid rgba(255, 215, 0, 0.3) !important;
-    line-height: 1.6 !important;
     vertical-align: top !important;
 }
 
-/* Remove max-width constraint */
-td, th {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-}
-
-/* Adjust column widths */
+/* Fixed column widths */
 td:first-child, th:first-child {
-    width: 15% !important;
+    width: 80px !important;  /* For percentage/score column */
 }
 
 td:nth-child(2), th:nth-child(2) {
-    width: 25% !important;
+    width: 120px !important;  /* For description column */
 }
 
+/* Let the guidelines column take remaining space */
 td:last-child, th:last-child {
-    width: 60% !important;
+    width: auto !important;
+}
+
+/* Text wrapping */
+td, th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
 }
 
 /* List styling */
