@@ -221,14 +221,14 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 
 /* Main content and rubrics layout */
 [data-testid="column"][data-column-width="0.6"] {
-    width: 30% !important;
-    min-width: 30% !important;
+    width: 35% !important;
+    min-width: 35% !important;
     padding-right: 1rem !important;
 }
 
 [data-testid="column"][data-column-width="0.4"] {
-    width: 70% !important;
-    min-width: 70% !important;
+    width: 65% !important;
+    min-width: 65% !important;
     padding-right: 0 !important;
 }
 
@@ -248,7 +248,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
     margin-bottom: 1rem !important;
     width: 100% !important;
     max-width: none !important;
-    min-width: 800px !important;
+    min-width: 600px !important;
 }
 
 /* Expander Header */
@@ -279,7 +279,7 @@ section[data-testid="stSidebar"][aria-expanded="true"] .stButton > button {
 table {
     table-layout: auto !important;
     width: 100% !important;
-    min-width: 780px !important;
+    min-width: 580px !important;
     border-collapse: collapse !important;
     font-size: 0.95rem !important;
     margin: 0 !important;
@@ -308,17 +308,17 @@ td {
 /* Adjust column widths for better space usage */
 [aria-label="Area of Extent (Part A)"] td:first-child,
 [aria-label="Area of Extent (Part A)"] th:first-child {
-    min-width: 120px !important;
+    min-width: 90px !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:nth-child(2),
 [aria-label="Area of Extent (Part A)"] th:nth-child(2) {
-    min-width: 180px !important;
+    min-width: 140px !important;
 }
 
 [aria-label="Area of Extent (Part A)"] td:last-child,
 [aria-label="Area of Extent (Part A)"] th:last-child {
-    min-width: 400px !important;
+    min-width: 300px !important;
 }
 
 /* Part C column adjustments */
@@ -353,7 +353,7 @@ td, th {
 
 /* Adjust the main container */
 .main .block-container {
-    max-width: 1400px !important;
+    max-width: 1200px !important;
     padding-left: 1rem !important;
     padding-right: 1rem !important;
 }
