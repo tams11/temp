@@ -136,14 +136,30 @@ def camera_page():
         
         if class_label == "Normal":
             st.markdown(f'<div style="background-color: #808080; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+            st.markdown("""
+            <div class="content-section">
+                <p>Based on the analysis, you don't appear to have Atopic Dermatitis. 
+                No further SCORAD assessment is needed at this time.</p>
+                
+                <p>However, if you have any concerns about your skin condition, you may still consult with:</p>
+                
+                <p><strong>Marichu's Derma Clinic</strong><br>
+                Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,<br>
+                Bacoor Cavite, Philippines, 4102</p>
+            </div>
+            """, unsafe_allow_html=True)
         elif class_label == "Mild":
             st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+            st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
+            if st.button("Proceed to Manual SCORAD Input", type="primary"):
+                st.session_state.page = "manual_input"
         elif class_label == "Moderate":
             st.markdown(f'<div style="background-color: #FFD700; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
+            st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
+            if st.button("Proceed to Manual SCORAD Input", type="primary"):
+                st.session_state.page = "manual_input"
         elif class_label == "Severe":
             st.markdown(f'<div style="background-color: #FF6B6B; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
-            
-        if class_label != "Normal":
             st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
             if st.button("Proceed to Manual SCORAD Input", type="primary"):
                 st.session_state.page = "manual_input"
