@@ -140,14 +140,7 @@ def camera_page():
             st.markdown("""
             <div style="color: #FFD700; font-family: Arial; font-size: 16px;">
             Based on the analysis, you don't appear to have Atopic Dermatitis.
-            No further SCORAD assessment is needed at this time.
-            
-            However, if you have any concerns about your skin condition, you may still consult with:
-    
-            *** Marichu's Derma Clinic ***
-            
-            Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,
-            Bacoor Cavite, Philippines, 4102
+            No further SCORAD assessment is needed.
             </div>
             """, unsafe_allow_html=True)
         elif class_label == "Mild":
