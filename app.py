@@ -312,7 +312,15 @@ def manual_input_page():
                     
                 st.markdown(f'<div style="background-color: {color}; padding: 10px; border-radius: 5px;">SCORAD Assessment: {severity} ({total_scorad:.2f})</div>', unsafe_allow_html=True)
                 
-                # Remove the duplicate SCORAD interpretation from here as well
+                # Add clinic recommendation
+                st.markdown("""
+                <div class="content-section">
+                    <h2>Recommended Clinic for Consultation</h2>
+                    <p><strong>Marichu's Derma Clinic</strong><br>
+                    Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,<br>
+                    Bacoor Cavite, Philippines, 4102</p>
+                </div>
+                """, unsafe_allow_html=True)
 
     # Rubrics column
     with rubrics:
