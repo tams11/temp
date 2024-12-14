@@ -137,15 +137,19 @@ def camera_page():
         if class_label == "Normal":
             st.markdown(f'<div style="background-color: #808080; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
             
-            # Using write() for plain text and markdown() for formatted text
-            st.write("Based on the analysis, you don't appear to have Atopic Dermatitis.")
-            st.write("No further SCORAD assessment is needed at this time.")
-            st.write("\nHowever, if you have any concerns about your skin condition, you may still consult with:")
+            st.markdown("""
+            <div style="color: #FFD700; font-family: Arial; font-size: 16px;">
+            Based on the analysis, you don't appear to have Atopic Dermatitis.
+            No further SCORAD assessment is needed at this time.
             
-            # Using markdown for the clinic details
-            st.markdown("**Marichu's Derma Clinic**")
-            st.write("Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,")
-            st.write("Bacoor Cavite, Philippines, 4102")
+            However, if you have any concerns about your skin condition, you may still consult with:
+    
+            *** Marichu's Derma Clinic ***
+            
+            Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,
+            Bacoor Cavite, Philippines, 4102
+            </div>
+            """, unsafe_allow_html=True)
         elif class_label == "Mild":
             st.markdown(f'<div style="background-color: #90EE90; padding: 10px; border-radius: 5px;">Intensity Level: {class_label} (Confidence: {confidence_score:.2%})</div>', unsafe_allow_html=True)
             st.write("Please proceed to Manual SCORAD Input to complete the assessment.")
