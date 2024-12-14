@@ -326,7 +326,7 @@ def manual_input_page():
                 # Add clinic recommendation
                 st.markdown("""
                 <div class="content-section">
-                    <h3>If you require further assistance, please consult with: </h3>
+                    <h3>For consultation, we recommend:</h3>
                     <p><strong>Marichu's Derma Clinic</strong><br>
                     Contact Number: 0999 355 1878<br>
                     Address: Ground Floor, Unit 7, Jacinto Building, Molino Rod 3,<br>
