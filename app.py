@@ -10,27 +10,32 @@ def load_css(file_name):
 # Apply the custom CSS file
 load_css("style.css")
 
-# Add custom object scope to handle DepthwiseConv2D compatibility
-@tf.keras.utils.register_keras_serializable()
-class CustomDepthwiseConv2D(tf.keras.layers.DepthwiseConv2D):
-    def __init__(self, *args, **kwargs):
-        if 'groups' in kwargs:
-            del kwargs['groups']
-        super().__init__(*args, **kwargs)
+@st.cache(allow_output_mutation=True)
+def load_model():
+    # Add custom object scope to handle DepthwiseConv2D compatibility
+    @tf.keras.utils.register_keras_serializable()
+    class CustomDepthwiseConv2D(tf.keras.layers.DepthwiseConv2D):
+        def __init__(self, *args, **kwargs):
+            if 'groups' in kwargs:
+                del kwargs['groups']
+            super().__init__(*args, **kwargs)
 
-    def get_config(self):
-        config = super().get_config()
-        if 'groups' in config:
-            del config['groups']
-        return config
+        def get_config(self):
+            config = super().get_config()
+            if 'groups' in config:
+                del config['groups']
+            return config
 
-# Register the custom layer
-tf.keras.utils.get_custom_objects().update({
-    'DepthwiseConv2D': CustomDepthwiseConv2D
-})
+    # Register the custom layer
+    tf.keras.utils.get_custom_objects().update({
+        'DepthwiseConv2D': CustomDepthwiseConv2D
+    })
 
-# Load the model with custom objects
-model = tf.keras.models.load_model('keras_model.h5', compile=False)
+    return tf.keras.models.load_model('keras_model.h5', compile=False)
+
+# Load the model using the cached function
+model = load_model()
+
 
 # Streamlit app interface
 import streamlit as st
@@ -114,6 +119,7 @@ def camera_page():
     
     if image_source is not None:
         st.write("Classifying...")
+        @st.cache
         def preprocess(image):
             # Teachable Machine preprocessing
             size = (224, 224)
