@@ -93,7 +93,8 @@ def camera_page():
     st.title("Skin Classification")
     st.markdown("""
     <div class="content-section">
-        <h2>📸 Upload a skin image or take a picture with your camera</h2>
+        <h2>📸 Upload an image of the affected area or take a photo</h2>
+        <h2>Please focus only on the affected area Thank You!</h2>
     </div>
     """, unsafe_allow_html=True)
     class_labels = ["Mild", "Moderate", "Severe", "Normal"]
